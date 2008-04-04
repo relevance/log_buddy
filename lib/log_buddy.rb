@@ -1,5 +1,5 @@
 =begin rdoc
-  LogBuddy is a developer tool for easy logging while testing, debugging, and inspecting.
+LogBuddy is a developer tool for easy logging while testing, debugging, and inspecting.
   
 Log shortcut method to give you easy, concise output of variables with their names and values.
 

@@ -1,9 +1,9 @@
 = LogBuddy
-
+  
 * Log bugs/issues/suggestions here: http://opensource.thinkrelevance.com/wiki/log_buddy
 * Source: http://github.com/relevance/log_buddy/tree/master
 * git clone git://github.com/relevance/log_buddy.git
-* rdocs: 
+* rdocs: http://thinkrelevance.rubyforge.org/log_buddy/
 
 == DESCRIPTION:
 
