@@ -21,7 +21,6 @@ Rake::RDocTask.new(:docs) do |rd|
   # rd.options << '-d' if RUBY_PLATFORM !~ /win32/ and `which dot` =~ /\/dot/ and not ENV['NODOT']
   rd.rdoc_dir = 'doc'
   files = hoe.spec.files.grep(hoe.rdoc_pattern)
-  p files
   files -= ['Manifest.txt']
   rd.rdoc_files.push(*files)
 

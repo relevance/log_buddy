@@ -1,24 +1,26 @@
 = LogBuddy
   
-* Log bugs/issues/suggestions here: http://opensource.thinkrelevance.com/wiki/log_buddy
-* Source: http://github.com/relevance/log_buddy/tree/master
-* git clone git://github.com/relevance/log_buddy.git
-* rdocs: http://thinkrelevance.rubyforge.org/log_buddy/
-
 == DESCRIPTION:
 
 log_buddy is your friendly little log buddy at your side, helping you dev, debug, and test.
 
 == SYNOPSIS:
 
-Call LogBuddy.init to use log_buddy.  It will add two methods to object instance and class level: "d" and "logger".  
+Call LogBuddy.init to use log_buddy.  It will add two methods to object instance and class level: "d" and "logger".  You can
+use your own logger with Logbuddy by passing it into init's options hash:
+    
+    LogBuddy.init :default_logger => Logger.new('my_log.log')
+    
+Now you have your logger available from any object, at the instance level and class level:
 
-* The "logger" method is just a typical logger - it will use the Rails logger if its available.  
-* The "d" method is a special helper that will output the code in the block and its result - note that you *must* use the bracket block form - do...end is not supported.
+    obj = Object.new
+    obj.logger.debug("hi")
+    class MyClass; end
+    MyClass.logger.info("heya")
 
-== EXAMPLES:
-
-(see also examples.rb)
+You also have a method called "d" (for "debug") on any object, which is used for quick debugging and logging of things while you are developing.
+Its especially useful while using autotest.  When you call the "d" method with an inline block, it will log the name of the things
+in the block and the result.  Examples:
 
     a = "foo"
     @a = "my var"
@@ -33,19 +35,28 @@ Call LogBuddy.init to use log_buddy.  It will add two methods to object instance
     d { bark }   # logs "bark = woof!"
 
 
+See examples.rb for live examples you can run.
+
 == REQUIREMENTS:
 
 * Ruby 1.8.6 or JRuby (tested with 1.1RC3)
+* untested on Ruby < 1.8.6, but probably works
  
 == ISSUES
 
-* Be careful you don't depend on methods that log_buddy adds to Object in production!
 * This is meant for non-production use while developing and testing --> it does stuff that is slow and you probably don't want happening in your production environment.
 * Don't even try using this in irb.
 
 == INSTALL:
 
 * sudo gem log_buddy
+
+== URLS
+
+* Log bugs, issues, and suggestions on Trac: http://opensource.thinkrelevance.com/wiki/log_buddy
+* View Source: http://github.com/relevance/log_buddy/tree/master
+* Git clone Source: git://github.com/relevance/log_buddy.git
+* RDocs: http://thinkrelevance.rubyforge.org/log_buddy/
 
 == LICENSE:
 
