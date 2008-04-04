@@ -18,9 +18,10 @@ Call LogBuddy.init to use log_buddy.  It will add two methods to object instance
 
 == EXAMPLES:
 
-* see also examples.rb...
+(see also examples.rb)
 
 a = "foo"
+
 @a = "my var"
 @@bar = "class var!"
 def bark
