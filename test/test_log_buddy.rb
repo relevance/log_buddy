@@ -93,6 +93,12 @@ describe "LogBuddy" do
       @a = "foo"
       d { @a }
     end
+    
+    it "should output constants" do
+      FOO_CONST = "yo!"
+      LogBuddy.expects(:debug).with(%[FOO_CONST = 'yo!'\n])
+      d { FOO_CONST }
+    end
   
     it "should output class vars" do
       LogBuddy.expects(:debug).with(%[@@class_var = 'hi'\n])
@@ -104,5 +110,15 @@ describe "LogBuddy" do
       LogBuddy.expects(:debug).with(%[SomeModule.say_something("dude!!!!") = 'hello dude!!!!'\n])
       d { SomeModule.say_something("dude!!!!") }
     end 
+    
+    it "should output multiple things with each having their own log calls" do
+      local1 = '1'
+      local2 = '2'
+      @ivar1 = '1'
+      LogBuddy.expects(:debug).with(%[local1 = '1'\n])
+      LogBuddy.expects(:debug).with(%[local2 = '2'\n])
+      LogBuddy.expects(:debug).with(%[@ivar1 = '1'\n])
+      d { local1; local2; @ivar1 }
+    end
   end
 end

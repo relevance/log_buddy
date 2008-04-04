@@ -1,3 +1,7 @@
+=== 0.0.2
+* rdocs
+* support for multiple statements in one "d" call separated by semicolons
+
 === 0.0.1 / 2008-03/28
 
 * Initial commit to github
