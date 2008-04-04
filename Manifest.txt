@@ -1,0 +1,10 @@
+History.txt
+Manifest.txt
+README.rdoc
+README.txt
+Rakefile
+bin/log_buddy
+examples.rb
+init.rb
+lib/log_buddy.rb
+test/test_log_buddy.rb
