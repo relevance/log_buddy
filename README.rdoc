@@ -54,8 +54,8 @@ See examples.rb for live examples you can run.
 == URLS
 
 * Log bugs, issues, and suggestions on Trac: http://opensource.thinkrelevance.com/wiki/log_buddy
-* View Source: http://github.com/relevance/log_buddy/tree/master
-* Git clone Source: git://github.com/relevance/log_buddy.git
+* View Source: http://github.com/relevance/logbuddy/tree/master
+* Git clone Source: git://github.com/relevance/logbuddy.git
 * RDocs: http://thinkrelevance.rubyforge.org/log_buddy/
 
 == LICENSE:
