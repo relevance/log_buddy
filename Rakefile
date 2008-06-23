@@ -25,7 +25,6 @@ Rake::RDocTask.new(:docs) do |rd|
   rd.rdoc_files.push(*files)
 
   title = "#{hoe.name}-#{hoe.version} Documentation"
-  title = "#{hoe.rubyforge_name}'s " + title if hoe.rubyforge_name != hoe.name
   rdoc_template = `allison --path`.strip << ".rb"
   rd.template = rdoc_template
   rd.options << "-t #{title}"
