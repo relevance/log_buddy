@@ -1,3 +1,6 @@
+=== 0.0.3
+* TBA
+
 === 0.0.2
 * rdocs
 * support for multiple statements in one "d" call separated by semicolons
