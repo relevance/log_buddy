@@ -6,8 +6,7 @@ log_buddy is your friendly little log buddy at your side, helping you dev, debug
 
 == SYNOPSIS:
 
-Call LogBuddy.init to use log_buddy.  It will add two methods to object instance and class level: "d" and "logger".  You can
-use your own logger with Logbuddy by passing it into init's options hash:
+Call LogBuddy.init to use log_buddy.  It will add two methods to object instance and class level: "d" and "logger".  You can use your own logger with Logbuddy by passing it into init's options hash:
     
     LogBuddy.init :default_logger => Logger.new('my_log.log')
     
