@@ -1,0 +1,4 @@
+master
+ * add dev dependancies, remove gem calls from rdoc task
+
+0.0.2
