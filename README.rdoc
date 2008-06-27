@@ -48,7 +48,7 @@ See examples.rb for live examples you can run.
 
 == INSTALL:
 
-* sudo gem log_buddy
+* sudo gem install log_buddy
 
 == URLS
 
