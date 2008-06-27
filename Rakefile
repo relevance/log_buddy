@@ -13,10 +13,13 @@ hoe = Hoe.new('log_buddy', LogBuddy::VERSION) do |p|
   p.rdoc_pattern = /^(lib|bin|ext)|txt|rdoc$/
 end
 
+hoe.spec.add_development_dependency "allison"
+hoe.spec.add_development_dependency "markaby"
+
 # Override RDoc to use allison template, and also use our .rdoc README as the main page instead of the default README.txt
 Rake::RDocTask.new(:docs) do |rd|
-  gem "allison"
-  gem "markaby"
+  # gem "allison"
+  # gem "markaby"
   rd.main = "README.rdoc"
   # rd.options << '-d' if RUBY_PLATFORM !~ /win32/ and `which dot` =~ /\/dot/ and not ENV['NODOT']
   rd.rdoc_dir = 'doc'
