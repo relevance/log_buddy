@@ -12,6 +12,7 @@ echoe = Echoe.new('log_buddy', LogBuddy::VERSION) do |p|
   p.rdoc_pattern = /^(lib|bin|ext)|txt|rdoc|CHANGELOG|LICENSE$/
   rdoc_template = `allison --path`.strip << ".rb"
   p.rdoc_template = rdoc_template
+  p.yaml_gemspec = false
 end
 
 echoe.spec.add_development_dependency "allison"
