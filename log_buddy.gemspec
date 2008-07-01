@@ -12,7 +12,7 @@ authors:
 autorequire: 
 bindir: bin
 
-date: 2008-06-30 00:00:00 -04:00
+date: 2008-07-01 00:00:00 -04:00
 default_executable: 
 dependencies: 
 - !ruby/object:Gem::Dependency 
@@ -63,13 +63,12 @@ extensions: []
 
 extra_rdoc_files: 
 - CHANGELOG
-- Manifest.txt
 - README.rdoc
 - bin/log_buddy
 - lib/log_buddy.rb
 files: 
 - CHANGELOG
-- Manifest.txt
+- Manifest
 - README.rdoc
 - Rakefile
 - bin/log_buddy
