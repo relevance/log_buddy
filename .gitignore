@@ -1,3 +1,4 @@
 .tm_last_run_ruby
 *.log
 doc/*
+pkg/*
