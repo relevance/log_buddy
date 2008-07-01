@@ -57,21 +57,19 @@ dependencies:
     version: 
 description: Log statements along with their name easily.  Mixin a logger everywhere when you need it.
 email: opensource@thinkrelevance.com
-executables: 
-- log_buddy
+executables: []
+
 extensions: []
 
 extra_rdoc_files: 
 - CHANGELOG
 - README.rdoc
-- bin/log_buddy
 - lib/log_buddy.rb
 files: 
 - CHANGELOG
 - Manifest
 - README.rdoc
 - Rakefile
-- bin/log_buddy
 - examples.rb
 - init.rb
 - lib/log_buddy.rb
