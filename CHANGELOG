@@ -1,4 +1,7 @@
-master
- * add dev dependancies, remove gem calls from rdoc task
+v0.0.4. add dev dependencies, remove gem calls from rdoc task
 
-0.0.2
+v0.0.3. specs and tweaks
+
+v0.0.2. rdocs; support for multiple statements in one "d" call separated by semicolons
+
+v0.0.1. Initial release to github; Birthday

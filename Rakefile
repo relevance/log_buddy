@@ -1,33 +1,20 @@
 require 'rubygems'
-require 'hoe'
+require 'echoe'
 require './lib/log_buddy.rb'
 
-hoe = Hoe.new('log_buddy', LogBuddy::VERSION) do |p|
+echoe = Echoe.new('log_buddy', LogBuddy::VERSION) do |p|
   p.rubyforge_name = 'thinkrelevance'
   p.author = 'Rob Sanheim - Relevance'
   p.email = 'opensource@thinkrelevance.com'
   p.summary = 'Log Buddy is your little development buddy.'
-  p.description = p.paragraphs_of('README.rdoc', 2..5).join("\n\n")
-  p.url = p.paragraphs_of('README.rdoc', 0).first.split(/\n/)[1..-1]
-  p.changes = p.paragraphs_of('History.txt', 0..1).join("\n\n")
-  p.rdoc_pattern = /^(lib|bin|ext)|txt|rdoc$/
-end
-
-hoe.spec.add_development_dependency "allison"
-hoe.spec.add_development_dependency "markaby"
-
-# Override RDoc to use allison template, and also use our .rdoc README as the main page instead of the default README.txt
-Rake::RDocTask.new(:docs) do |rd|
-  rd.main = "README.rdoc"
-  # rd.options << '-d' if RUBY_PLATFORM !~ /win32/ and `which dot` =~ /\/dot/ and not ENV['NODOT']
-  rd.rdoc_dir = 'doc'
-  files = hoe.spec.files.grep(hoe.rdoc_pattern)
-  files -= ['Manifest.txt']
-  rd.rdoc_files.push(*files)
-
-  title = "#{hoe.name}-#{hoe.version} Documentation"
+  p.description = 'Log statements along with their name easily.  Mixin a logger everywhere when you need it.'
+  p.url = "http://opensource.thinkrelevance.com/wiki/log_buddy"
+  p.rdoc_pattern = /^(lib|bin|ext)|txt|rdoc|CHANGELOG|LICENSE$/
   rdoc_template = `allison --path`.strip << ".rb"
-  rd.template = rdoc_template
-  rd.options << "-t #{title}"
-  rd.options << '--line-numbers' << '--inline-source'
+  p.rdoc_template = rdoc_template
+  p.manifest_name = 'manifest.txt'
 end
+
+echoe.spec.add_development_dependency "echoe"
+echoe.spec.add_development_dependency "allison"
+echoe.spec.add_development_dependency "markaby"
