@@ -14,6 +14,5 @@ echoe = Echoe.new('log_buddy', LogBuddy::VERSION) do |p|
   p.rdoc_template = rdoc_template
 end
 
-echoe.spec.add_development_dependency "echoe"
 echoe.spec.add_development_dependency "allison"
 echoe.spec.add_development_dependency "markaby"

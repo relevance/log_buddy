@@ -26,16 +26,6 @@ dependencies:
         version: "0"
     version: 
 - !ruby/object:Gem::Dependency 
-  name: echoe
-  type: :development
-  version_requirement: 
-  version_requirements: !ruby/object:Gem::Requirement 
-    requirements: 
-    - - ">="
-      - !ruby/object:Gem::Version 
-        version: "0"
-    version: 
-- !ruby/object:Gem::Dependency 
   name: allison
   type: :development
   version_requirement: 
