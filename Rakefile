@@ -1,3 +1,11 @@
+begin
+  gem 'technicalpickles-echoe'
+rescue LoadError => e
+  puts "couldn't find the correct version of echoe - please install from forked version on github: http://github.com/technicalpickles/echoe/"
+  puts "gem sources -a http://gems.github.com"
+  puts "sudo gem install technicalpickles-echoe"
+end
+
 require 'rubygems'
 require 'echoe'
 require './lib/log_buddy.rb'
@@ -12,7 +20,6 @@ echoe = Echoe.new('log_buddy', LogBuddy::VERSION) do |p|
   p.rdoc_pattern = /^(lib|bin|ext)|txt|rdoc|CHANGELOG|LICENSE$/
   rdoc_template = `allison --path`.strip << ".rb"
   p.rdoc_template = rdoc_template
-  p.yaml_gemspec = false
 end
 
 echoe.spec.add_development_dependency "allison"
