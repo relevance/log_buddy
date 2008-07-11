@@ -15,6 +15,7 @@ module Foo;
 end
   
 
+d "hi"                    # logs "hi" (regular old logging)
 d { a }                   # logs "a = 'foo'"
 d { @a }                  # logs "@a = 'my var'"
 d { @@bar }               # logs "@@bar = 'class var!'"
