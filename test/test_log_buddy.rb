@@ -1,10 +1,4 @@
-require 'rubygems'
-require "test/unit"
-require "test/spec"
-require "test/spec/should-output"
-require 'mocha'
-require 'logger'
-require File.expand_path(File.join(File.dirname(__FILE__), "..", "lib", "log_buddy"))
+require File.expand_path(File.join(File.dirname(__FILE__), *%w[helper]))
 
 module SomeModule
   def self.say_something(name)

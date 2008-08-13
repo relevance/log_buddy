@@ -1,24 +1,27 @@
-require 'rubygems'
-require "test/unit"
-require "test/spec"
-require "test/spec/should-output"
+require File.expand_path(File.join(File.dirname(__FILE__), *%w[helper]))
 
 describe "LogBuddy init" do
-  def load_init
-    load File.join(File.dirname(__FILE__), *%w[.. init.rb])
-  end
-
-  after { ENV["SAFE_LOG_BUDDY"] = nil }
+  after  { reset_safe_log_buddy_mode }
   
   it "doesnt mixin to object if SAFE_LOG_BUDDY is true" do
+    LogBuddy.expects(:init).never
     ENV["SAFE_LOG_BUDDY"] = "true"
     load_init
-    lambda { Object.new.d }.should.raise NoMethodError
   end
   
   it "mixin to object if SAFE_LOG_BUDDY is true" do
+    LogBuddy.expects(:init).once
     load_init
-    Object.new.d
+  end
+  
+  def load_init
+    silence_warnings do
+      load File.join(File.dirname(__FILE__), *%w[.. init.rb])
+    end
+  end
+
+  def reset_safe_log_buddy_mode
+    ENV["SAFE_LOG_BUDDY"] = nil
   end
 
 end
