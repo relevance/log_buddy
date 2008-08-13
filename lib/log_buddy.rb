@@ -16,7 +16,7 @@ Examples:
     
 =end
 class LogBuddy
-  VERSION = '0.0.5'
+  VERSION = '0.0.6'
 
   # Use LogBuddy!
   def self.init(options = {})

@@ -1,3 +1,5 @@
+v0.0.6. changed to mixing to Object by default - set ENV["SAFE_LOG_BUDDY"] = true to override
+
 v0.0.5. update echoe dependency to work with github
 
 v0.0.4. add dev dependencies, remove gem calls from rdoc task

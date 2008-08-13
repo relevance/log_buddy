@@ -17,13 +17,8 @@ module SomeModule
 end
 
 describe "LogBuddy" do
-  
-  describe "raise no method error if init isn't called" do
-    lambda { Object.new.d }.should.raise NoMethodError
-  end
-  
   describe "object extensions" do
-    it "mixes itself into Object intance and class level by default" do
+    it "mixes itself into Object instance and class level by default" do
       Object.expects(:include).with(LogBuddy::Mixin)
       Object.expects(:extend).with(LogBuddy::Mixin)
       LogBuddy.init
