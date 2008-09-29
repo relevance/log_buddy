@@ -1,8 +1,12 @@
 CHANGELOG
-Manifest
-README.rdoc
-Rakefile
 examples.rb
 init.rb
 lib/log_buddy.rb
-test/test_log_buddy.rb
+LICENSE
+log_buddy.gemspec
+Manifest
+Rakefile
+README.rdoc
+spec/helper.rb
+spec/log_buddy_init_spec.rb
+spec/log_buddy_spec.rb

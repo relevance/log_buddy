@@ -22,5 +22,12 @@ echoe = Echoe.new('log_buddy', LogBuddy::VERSION) do |p|
   p.rdoc_template = rdoc_template
 end
 
+desc 'Test LogBuddy.'
+Rake::TestTask.new(:test) do |t|
+  t.libs << 'lib'
+  t.pattern = 'spec/**/*_spec.rb'
+  t.verbose = true
+end
+
 echoe.spec.add_development_dependency "allison"
 echoe.spec.add_development_dependency "markaby"

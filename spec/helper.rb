@@ -3,6 +3,7 @@ require "test/unit"
 require "test/spec"
 require "test/spec/should-output"
 require "mocha"
+require "redgreen" rescue nil
 require File.expand_path(File.join(File.dirname(__FILE__), "..", "lib", "log_buddy"))
 
 def silence_warnings
