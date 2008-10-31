@@ -29,5 +29,7 @@ Rake::TestTask.new(:test) do |t|
   t.verbose = true
 end
 
+task :release => [:test, :publish, :announce]
+
 echoe.spec.add_development_dependency "allison"
 echoe.spec.add_development_dependency "markaby"
