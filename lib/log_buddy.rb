@@ -16,7 +16,7 @@ Examples:
     
 =end
 class LogBuddy
-  VERSION = '0.1.0'
+  VERSION = '0.1.1'
 
   # Use LogBuddy!
   def self.init(options = {})
@@ -46,11 +46,15 @@ class LogBuddy
     def d(msg = nil, &blk)
       LogBuddy.debug(msg) if msg
       return unless block_given?
-      logged_line = LogBuddy.read_line(caller[0])
-      arguments = LogBuddy.parse_args(logged_line)
-      arguments.each do |arg|
-        result = eval(arg, blk.binding)
-        LogBuddy.debug(%[#{arg} = '#{result}'\n])
+      begin
+        logged_line = LogBuddy.read_line(caller[0])
+        arguments = LogBuddy.parse_args(logged_line)
+        arguments.each do |arg|
+          result = eval(arg, blk.binding)
+          LogBuddy.debug(%[#{arg} = '#{result}'\n])
+        end
+      rescue Exception => e
+        LogBuddy.debug "LogBuddy caught an exception: #{e.message}"
       end
     end
 

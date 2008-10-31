@@ -1,10 +1,12 @@
+# -*- encoding: utf-8 -*-
+
 Gem::Specification.new do |s|
   s.name = %q{log_buddy}
-  s.version = "0.1.0"
+  s.version = "0.1.1"
 
   s.required_rubygems_version = Gem::Requirement.new("= 1.2") if s.respond_to? :required_rubygems_version=
   s.authors = ["Rob Sanheim - Relevance"]
-  s.date = %q{2008-09-29}
+  s.date = %q{2008-10-30}
   s.description = %q{Log statements along with their name easily.  Mixin a logger everywhere when you need it.}
   s.email = %q{opensource@thinkrelevance.com}
   s.extra_rdoc_files = ["CHANGELOG", "lib/log_buddy.rb", "LICENSE", "README.rdoc"]
@@ -14,14 +16,14 @@ Gem::Specification.new do |s|
   s.rdoc_options = ["--line-numbers", "--inline-source", "--title", "Log_buddy", "--main", "README.rdoc"]
   s.require_paths = ["lib"]
   s.rubyforge_project = %q{thinkrelevance}
-  s.rubygems_version = %q{1.2.0}
+  s.rubygems_version = %q{1.3.0}
   s.summary = %q{Log Buddy is your little development buddy.}
 
   if s.respond_to? :specification_version then
     current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
     s.specification_version = 2
 
-    if current_version >= 3 then
+    if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
       s.add_development_dependency(%q<echoe>, [">= 0"])
       s.add_development_dependency(%q<allison>, [">= 0"])
       s.add_development_dependency(%q<markaby>, [">= 0"])

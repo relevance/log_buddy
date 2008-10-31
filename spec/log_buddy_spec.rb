@@ -8,6 +8,10 @@ module SomeModule
   def self.message
     "hello"
   end
+  
+  def self.raise_exception
+    raise Exception
+  end
 end
 
 describe "LogBuddy" do
@@ -108,6 +112,11 @@ describe "LogBuddy" do
       LogBuddy.expects(:debug).with(%[local2 = '2'\n])
       LogBuddy.expects(:debug).with(%[@ivar1 = '1'\n])
       d { local1; local2; @ivar1 }
+    end
+    
+    it "should gracefully handle exceptions" do
+      LogBuddy.expects(:debug).with('LogBuddy caught an exception: Exception')
+      d { SomeModule.raise_exception }
     end
   end
 end
