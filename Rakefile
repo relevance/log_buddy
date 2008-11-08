@@ -1,12 +1,5 @@
-begin
-  gem 'technicalpickles-echoe'
-rescue LoadError => e
-  puts "couldn't find the correct version of echoe - please install from forked version on github: http://github.com/technicalpickles/echoe/"
-  puts "gem sources -a http://gems.github.com"
-  puts "sudo gem install technicalpickles-echoe"
-end
-
 require 'rubygems'
+gem 'echoe'
 require 'echoe'
 require './lib/log_buddy.rb'
 
@@ -32,5 +25,6 @@ end
 # The below results in 'input stream exhausted' - dunno why?
 # task :release => [:test, :publish_docs, :announce]
 
+echoe.spec.add_development_dependency "echoe"
 echoe.spec.add_development_dependency "allison"
 echoe.spec.add_development_dependency "markaby"

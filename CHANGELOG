@@ -1,3 +1,7 @@
+v0.1.3  Use plain old echoe; really fix rubygems errors (I hope)
+
+v0.1.2  Attempting to fix rubygems errors
+
 v0.1.1. Handle exceptions from within the block
 
 v0.1.0. Specify, clean up
