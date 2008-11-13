@@ -9,8 +9,8 @@ module SomeModule
     "hello"
   end
   
-  def self.raise_exception
-    raise Exception
+  def self.raise_runtime_error
+    raise RuntimeError
   end
 end
 
@@ -114,9 +114,14 @@ describe "LogBuddy" do
       d { local1; local2; @ivar1 }
     end
     
-    it "should gracefully handle exceptions" do
-      LogBuddy.expects(:debug).with('LogBuddy caught an exception: Exception')
-      d { SomeModule.raise_exception }
+    it "should gracefully handle runtimer errors" do
+      LogBuddy.expects(:debug).with('LogBuddy caught an exception: RuntimeError')
+      d { SomeModule.raise_runtime_error }
+    end
+    
+    it "logs to stdout as well as the default logger" do
+      LogBuddy.expects(:puts).with(%["foo" = 'foo'\n])
+      d { "foo" }
     end
   end
 end

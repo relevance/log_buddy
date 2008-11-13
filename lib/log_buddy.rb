@@ -53,7 +53,7 @@ class LogBuddy
           result = eval(arg, blk.binding)
           LogBuddy.debug(%[#{arg} = '#{result}'\n])
         end
-      rescue Exception => e
+      rescue RuntimeError => e
         LogBuddy.debug "LogBuddy caught an exception: #{e.message}"
       end
     end
@@ -85,6 +85,7 @@ class LogBuddy
   
   # Just debug it
   def self.debug(str)
+    puts str
     default_logger.debug(str)
   end
   
