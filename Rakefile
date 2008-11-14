@@ -2,6 +2,7 @@ require 'rubygems'
 gem 'echoe'
 require 'echoe'
 require './lib/log_buddy.rb'
+require 'spec/rake/spectask'
 
 echoe = Echoe.new('log_buddy', LogBuddy::VERSION) do |p|
   p.rubyforge_name = 'thinkrelevance'
@@ -15,12 +16,15 @@ echoe = Echoe.new('log_buddy', LogBuddy::VERSION) do |p|
   p.rdoc_template = rdoc_template
 end
 
-desc 'Test LogBuddy.'
-Rake::TestTask.new(:test) do |t|
-  t.libs << 'lib'
-  t.pattern = 'spec/**/*_spec.rb'
-  t.verbose = true
+Rake.application.instance_variable_get(:@tasks).delete("default")
+Rake.application.instance_variable_get(:@tasks).delete("test")
+
+desc "Run examples"
+Spec::Rake::SpecTask.new("spec") do |t|
+    t.spec_files = FileList['spec/**/*_spec.rb']
 end
+
+task :default => :spec
 
 # The below results in 'input stream exhausted' - dunno why?
 # task :release => [:test, :publish_docs, :announce]

@@ -1,9 +1,8 @@
 require 'rubygems'
-require "test/unit"
-require "test/spec"
-require "test/spec/should-output"
+gem 'rspec'
+gem 'mocha'
 require "mocha"
-require "redgreen" unless Object.const_defined?("TextMate")
+require 'spec'
 require File.expand_path(File.join(File.dirname(__FILE__), "..", "lib", "log_buddy"))
 
 def silence_warnings
@@ -11,4 +10,8 @@ def silence_warnings
   yield
 ensure
   $VERBOSE = old_verbose
+end
+
+Spec::Runner.configure do |config|
+  config.mock_with :mocha
 end

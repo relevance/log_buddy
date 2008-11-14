@@ -85,8 +85,12 @@ class LogBuddy
   
   # Just debug it
   def self.debug(str)
-    puts str
+    stdout_puts(str)
     default_logger.debug(str)
+  end
+  
+  def self.stdout_puts(str)
+    puts str
   end
   
   # Returns array of arguments in the block
