@@ -1,3 +1,24 @@
+require File.join(File.dirname(__FILE__), *%w[log_buddy utils])
+require File.join(File.dirname(__FILE__), *%w[log_buddy mixin])
+require File.join(File.dirname(__FILE__), *%w[log_buddy version])
+
+=begin rdoc
+LogBuddy is a developer tool for easy logging while testing, debugging, and inspecting.
+  
+The log shortcut method to give you easy, concise output of variables with their names and values.
+
+Examples:
+    a = "foo"
+    @a = "my var"
+    def bark
+     "woof!"
+    end
+
+    d { a }      # logs "a = 'foo'"
+    d { @a }     # logs "@a = 'my var'"
+    d { bark }   # logs "bark = woof!"
+    
+=end
 module LogBuddy
   # Configure and include LogBuddy into Object.
   # You can pass in any of the following configuration options:
@@ -20,6 +41,7 @@ module LogBuddy
   end
 
   class << self
+    include LogBuddy::Utils
     def logger
       return @logger if @logger
       @logger = init_default_logger
@@ -42,6 +64,3 @@ module LogBuddy
     
   end
 end
-
-require File.join(File.dirname(__FILE__), *%w[log_buddy log])
-require File.join(File.dirname(__FILE__), *%w[log_buddy version])
