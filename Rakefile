@@ -1,10 +1,10 @@
 require 'rubygems'
 gem 'echoe'
 require 'echoe'
-require './lib/log_buddy.rb'
 require 'spec/rake/spectask'
+require File.join(File.dirname(__FILE__), *%w[lib log_buddy version])
 
-echoe = Echoe.new('log_buddy', LogBuddy::VERSION) do |p|
+echoe = Echoe.new('log_buddy', LogBuddy::VERSION::STRING) do |p|
   p.rubyforge_name = 'thinkrelevance'
   p.author = 'Rob Sanheim - Relevance'
   p.email = 'opensource@thinkrelevance.com'
@@ -20,9 +20,7 @@ Rake.application.instance_variable_get(:@tasks).delete("default")
 Rake.application.instance_variable_get(:@tasks).delete("test")
 
 desc "Run examples"
-Spec::Rake::SpecTask.new("spec") do |t|
-    t.spec_files = FileList['spec/**/*_spec.rb']
-end
+Spec::Rake::SpecTask.new
 
 task :default => :spec
 

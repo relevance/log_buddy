@@ -1,3 +1,4 @@
+require 'logger'
 require 'rubygems'
 gem 'rspec'
 gem 'mocha'
