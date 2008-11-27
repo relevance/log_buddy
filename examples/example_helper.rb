@@ -13,4 +13,4 @@ ensure
   $VERBOSE = old_verbose
 end
 
-Micronaut::ExampleRunner.autorun
+Micronaut::Runner.autorun
