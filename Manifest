@@ -7,6 +7,6 @@ log_buddy.gemspec
 Manifest
 Rakefile
 README.rdoc
-spec/helper.rb
-spec/log_buddy_init_spec.rb
-spec/log_buddy_spec.rb
+examples/example_helper.rb
+examples/log_buddy_init_example.rb
+examples/log_buddy_example.rb

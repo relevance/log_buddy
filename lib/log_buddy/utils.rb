@@ -2,7 +2,7 @@ module LogBuddy
   module Utils
   
     def debug(str)
-      stdout_puts(str) if @stdout
+      stdout_puts(str) if log_to_stdout?
       logger.debug(str)
     end
   
