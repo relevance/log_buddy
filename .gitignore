@@ -3,3 +3,4 @@
 doc/*
 pkg/*
 TAGS
+coverage/
