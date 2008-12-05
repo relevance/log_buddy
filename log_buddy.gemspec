@@ -9,10 +9,10 @@ Gem::Specification.new do |s|
   s.date = %q{2008-12-05}
   s.description = %q{Log statements along with their name easily.  Mixin a logger everywhere when you need it.}
   s.email = %q{opensource@thinkrelevance.com}
-  s.extra_rdoc_files = ["CHANGELOG", "LICENSE", "README.rdoc", "lib/log_buddy/mixin.rb", "lib/log_buddy/utils.rb", "lib/log_buddy/version.rb", "lib/log_buddy.rb"]
+  s.extra_rdoc_files = ["CHANGELOG", "LICENSE", "README.rdoc", "lib/log_buddy/mixin.rb", "lib/log_buddy/utils.rb", "lib/log_buddy/version.rb", "lib/log_buddy.rb", "log_buddy.gemspec"]
   s.files = ["CHANGELOG", "LICENSE", "Manifest", "README.rdoc", "Rakefile", "examples/example_helper.rb", "examples/log_buddy_example.rb", "examples/log_buddy_init_example.rb", "examples/log_example.rb", "examples.rb", "init.rb", "lib/log_buddy/mixin.rb", "lib/log_buddy/utils.rb", "lib/log_buddy/version.rb", "lib/log_buddy.rb", "log_buddy.gemspec"]
   s.has_rdoc = true
-  s.homepage = %q{http://opensource.thinkrelevance.com/wiki/log_buddy}
+  s.homepage = %q{http://github.com/relevance/logbuddy}
   s.rdoc_options = ["--line-numbers", "--inline-source", "--title", "Log_buddy", "--main", "README.rdoc"]
   s.require_paths = ["lib"]
   s.rubyforge_project = %q{thinkrelevance}

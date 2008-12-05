@@ -9,8 +9,8 @@ echoe = Echoe.new('log_buddy', LogBuddy::VERSION::STRING) do |p|
   p.email = 'opensource@thinkrelevance.com'
   p.summary = 'Log Buddy is your little development buddy.'
   p.description = 'Log statements along with their name easily.  Mixin a logger everywhere when you need it.'
-  p.url = "http://opensource.thinkrelevance.com/wiki/log_buddy"
-  p.rdoc_pattern = /^(lib|bin|ext)|txt|rdoc|CHANGELOG|LICENSE$/
+  p.url = "http://github.com/relevance/logbuddy"
+  p.rdoc_pattern = /^(lib|bin|ext)|txt|rdoc|gemspec|CHANGELOG|LICENSE$/
   rdoc_template = `allison --path`.strip << ".rb"
   p.rdoc_template = rdoc_template
 end

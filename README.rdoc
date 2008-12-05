@@ -57,6 +57,7 @@ See examples.rb for live examples you can run.
 * Log bugs, issues, and suggestions at Lighthouse: http://relevance.lighthouseapp.com/projects/19074-log-buddy/overview
 * View Source: http://github.com/relevance/logbuddy
 * Git clone Source: git://github.com/relevance/logbuddy.git
+* Continuous Integration: http://runcoderun.com/relevance/logbuddy
 * RDocs: http://thinkrelevance.rubyforge.org/log_buddy
 
 == LICENSE:
