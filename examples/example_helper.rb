@@ -1,6 +1,6 @@
 require 'logger'
 require 'rubygems'
-gem 'spicycode-micronaut'
+gem 'spicycode-micronaut', "= 0.0.4"
 gem 'mocha'
 require "mocha"
 require 'micronaut'
