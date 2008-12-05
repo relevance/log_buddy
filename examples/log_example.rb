@@ -38,16 +38,16 @@ describe LogBuddy::Mixin, " behavior" do
   end
   
   describe "outputting the code being logged and its result" do
-    before { LogBuddy.init }
+    before { LogBuddy.init :log_to_stdout => false }
     it "should log to default logger" do
       LogBuddy.expects(:logger).returns(logger = mock)
       logger.expects(:debug).with(anything)
-      d {'hi'}
+      d {'hi man'}
     end
     
     it "should log a plain arg" do
-      LogBuddy.expects(:debug).with('hi')
-      d 'hi'
+      LogBuddy.expects(:debug).with('hey yo')
+      d 'hey yo'
     end
     
     it "logs both if given an arg and a block" do
@@ -109,15 +109,16 @@ describe LogBuddy::Mixin, " behavior" do
   end
   
   describe "stdout" do
+    before { Logger.any_instance.stubs(:debug) }
     it "logs to stdout as well as the default logger" do
       LogBuddy.init :log_to_stdout => true
-      LogBuddy.expects(:stdout_puts)#.with(%["foo" = 'foo'\n])
+      LogBuddy.expects(:stdout_puts).with(%["foo" = 'foo'\n])
       d { "foo" }
     end
     
     it "doesnt log to stdout if stdout configured off" do
       LogBuddy.init :log_to_stdout => false
-      LogBuddy.expects(:stdout_puts).never #.with(%["foo" = 'foo'\n])
+      LogBuddy.expects(:stdout_puts).never
       d { "foo" }
     end
   end

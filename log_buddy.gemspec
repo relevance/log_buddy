@@ -2,11 +2,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{log_buddy}
-  s.version = "0.0.2"
+  s.version = "0.1.5"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 1.2") if s.respond_to? :required_rubygems_version=
   s.authors = ["Rob Sanheim - Relevance"]
-  s.date = %q{2008-11-26}
+  s.date = %q{2008-12-05}
   s.description = %q{Log statements along with their name easily.  Mixin a logger everywhere when you need it.}
   s.email = %q{opensource@thinkrelevance.com}
   s.extra_rdoc_files = ["CHANGELOG", "lib/log_buddy.rb", "LICENSE", "README.rdoc"]
