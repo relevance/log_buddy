@@ -1,9 +1,9 @@
 require 'logger'
 require 'rubygems'
-gem 'rspec'
+gem 'spicycode-micronaut'
 gem 'mocha'
 require "mocha"
-require 'spec'
+require 'micronaut'
 require File.expand_path(File.join(File.dirname(__FILE__), "..", "lib", "log_buddy"))
 
 def silence_warnings
@@ -13,6 +13,4 @@ ensure
   $VERBOSE = old_verbose
 end
 
-Spec::Runner.configure do |config|
-  config.mock_with :mocha
-end
+Micronaut::Runner.autorun

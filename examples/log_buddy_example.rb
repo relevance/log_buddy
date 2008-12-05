@@ -1,13 +1,13 @@
-require File.expand_path(File.join(File.dirname(__FILE__), *%w[helper]))
+require File.expand_path(File.join(File.dirname(__FILE__), *%w[example_helper]))
 
 describe LogBuddy do
   
   it "has logger" do
-    LogBuddy.should respond_to :logger
+    LogBuddy.should respond_to(:logger)
   end
   
   it "has stdout config option" do
-    LogBuddy.should respond_to :log_to_stdout?
+    LogBuddy.should respond_to(:log_to_stdout?)
   end
   
   describe "init" do
@@ -19,8 +19,8 @@ describe LogBuddy do
 
     it "adds logger method to Object instance and class" do
       LogBuddy.init
-      Object.new.should respond_to :logger
-      Object.should respond_to :logger
+      Object.new.should respond_to(:logger)
+      Object.should respond_to(:logger)
     end
     
     it "defaults to log to stdout (as well as logger)" do

@@ -1,4 +1,4 @@
-require File.expand_path(File.join(File.dirname(__FILE__), *%w[helper]))
+require File.expand_path(File.join(File.dirname(__FILE__), *%w[example_helper]))
 
 module SomeModule
   def self.say_something(name)
@@ -110,14 +110,13 @@ describe LogBuddy::Mixin, " behavior" do
   
   describe "stdout" do
     it "logs to stdout as well as the default logger" do
-      LogBuddy.init :stdout => true
-      pending("failing in rspec for some reason - no idea why")
-      LogBuddy.expects(:stdout_puts).with(anything) #.with(%["foo" = 'foo'\n])
+      LogBuddy.init :log_to_stdout => true
+      LogBuddy.expects(:stdout_puts)#.with(%["foo" = 'foo'\n])
       d { "foo" }
     end
     
     it "doesnt log to stdout if stdout configured off" do
-      LogBuddy.init :stdout => false
+      LogBuddy.init :log_to_stdout => false
       LogBuddy.expects(:stdout_puts).never #.with(%["foo" = 'foo'\n])
       d { "foo" }
     end

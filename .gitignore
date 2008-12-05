@@ -2,5 +2,6 @@
 *.log
 doc/*
 pkg/*
+coverage
 TAGS
 coverage/
