@@ -15,9 +15,17 @@ module Foo;
 end
   
 
-d "hi"                    # logs "hi" (regular old logging)
-d { a }                   # logs "a = 'foo'"
-d { @a }                  # logs "@a = 'my var'"
-d { @@bar }               # logs "@@bar = 'class var!'"
-d { bark }                # logs "bark = woof!"
-d { Foo::module_method }  # logs Foo::module_method = 'hi!!'
+# LogBuddy calls and their output:
+
+d "hi"                    # hi
+d { a }                   # a = "foo"
+d { @a }                  # @a = "my var"
+d { @@bar }               # @@bar = "class var!"
+d { bark }                # bark = "woof!"
+d { Foo::module_method }  # Foo::module_method = "hi!!"
+
+hsh = {:foo => "bar", "key" => "value"}
+array = [1,2,3,4,"5"]
+
+d { hsh }     
+d { array }

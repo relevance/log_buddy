@@ -1,31 +1,26 @@
 module LogBuddy
   module Utils
   
-    def obj_to_string(obj)
-      case obj
-      when ::String
-        obj
-      when ::Exception
-        "#{ obj.message } (#{ obj.class })\n" <<
-          (obj.backtrace || []).join("\n")
-      else
-        obj.inspect
-      end
-    end
-    
-    def debug(str)
+    def debug(obj)
+      str = obj_to_string(obj)
       stdout_puts(str) if log_to_stdout?
       logger.debug(str)
+    end
+    
+    def arg_and_blk_debug(arg, blk)
+      result = eval(arg, blk.binding)
+      result_str = obj_to_string(result, :quote_strings => true)
+      LogBuddy.debug(%[#{arg} = #{result_str}\n])
     end
   
     def stdout_puts(str)
       puts str
     end
-  
+    
     # Returns array of arguments in the block
-    # You must ues the brace form (ie d { "hi" }) and not do...end
+    # You must use the brace form (ie d { "hi" }) and not do...end
     def parse_args(logged_line)
-      block_contents = logged_line[/\{(.*)\}/, 1]
+      block_contents = logged_line[/\{(.*?)\}/, 1]
       args = block_contents.split(";").map {|arg| arg.strip }
     end
   
@@ -37,5 +32,19 @@ module LogBuddy
     
       lines[line_number - 1]
     end
+    
+    def obj_to_string(obj, options = {})
+      quote_strings = options.delete(:quote_strings)
+      case obj
+      when ::String
+        quote_strings ? %["#{obj}"] : obj 
+      when ::Exception
+        "#{ obj.message } (#{ obj.class })\n" <<
+          (obj.backtrace || []).join("\n")
+      else
+        obj.inspect
+      end
+    end
+    
   end
 end

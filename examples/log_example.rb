@@ -45,14 +45,14 @@ describe LogBuddy::Mixin, " behavior" do
       d {'hi man'}
     end
     
-    it "should log a plain arg" do
-      LogBuddy.expects(:debug).with('hey yo')
+    it "should log a plain method call as is, nothing fancy" do
+      LogBuddy.expects(:debug).with("hey yo")
       d 'hey yo'
     end
     
-    it "logs both if given an arg and a block" do
-      LogBuddy.expects(:debug).with('hi mom')
-      LogBuddy.expects(:debug).with(%[foo = 'foo'\n])
+    it "logs both argument and resulting value if using block from" do
+      LogBuddy.expects(:debug).with("hi mom")
+      LogBuddy.expects(:debug).with(%[foo = "foo"\n])
       foo = "foo"
       d("hi mom") { foo }
     end
@@ -62,32 +62,32 @@ describe LogBuddy::Mixin, " behavior" do
     end
     
     it "should output only local vars in the block" do
-      LogBuddy.expects(:debug).with(%[a = 'foo'\n])
+      LogBuddy.expects(:debug).with(%[a = "foo"\n])
       b = "bad"
       a = "foo"
       d { a }
     end
   
     it "should output instance vars" do
-      LogBuddy.expects(:debug).with(%[@a = 'foo'\n])
+      LogBuddy.expects(:debug).with(%[@a = "foo"\n])
       @a = "foo"
       d { @a }
     end
     
     it "should output constants" do
       FOO_CONST = "yo!"
-      LogBuddy.expects(:debug).with(%[FOO_CONST = 'yo!'\n])
+      LogBuddy.expects(:debug).with(%[FOO_CONST = "yo!"\n])
       d { FOO_CONST }
     end
   
     it "should output class vars" do
-      LogBuddy.expects(:debug).with(%[@@class_var = 'hi'\n])
+      LogBuddy.expects(:debug).with(%[@@class_var = "hi"\n])
       @@class_var = "hi"
       d { @@class_var }
     end
   
     it "should output method calls" do
-      LogBuddy.expects(:debug).with(%[SomeModule.say_something("dude!!!!") = 'hello dude!!!!'\n])
+      LogBuddy.expects(:debug).with(%[SomeModule.say_something("dude!!!!") = "hello dude!!!!"\n])
       d { SomeModule.say_something("dude!!!!") }
     end 
     
@@ -95,9 +95,9 @@ describe LogBuddy::Mixin, " behavior" do
       local1 = '1'
       local2 = '2'
       @ivar1 = '1'
-      LogBuddy.expects(:debug).with(%[local1 = '1'\n])
-      LogBuddy.expects(:debug).with(%[local2 = '2'\n])
-      LogBuddy.expects(:debug).with(%[@ivar1 = '1'\n])
+      LogBuddy.expects(:debug).with(%[local1 = "1"\n])
+      LogBuddy.expects(:debug).with(%[local2 = "2"\n])
+      LogBuddy.expects(:debug).with(%[@ivar1 = "1"\n])
       d { local1; local2; @ivar1 }
     end
     
@@ -105,6 +105,22 @@ describe LogBuddy::Mixin, " behavior" do
       LogBuddy.expects(:debug).with('LogBuddy caught an exception: RuntimeError')
       d { SomeModule.raise_runtime_error }
     end
+    
+    it "logs things okay with inline rdoc" do
+      LogBuddy.stubs(:debug)
+      hsh = {:foo=>"bar", "key"=>"value"}
+      d { hsh } # hsh = {:foo=>"bar", "key"=>"value"}
+    end
+    
+    it "logs inspected version of hashes and arrays" do
+      hsh = { :peanut_butter => "jelly", "awesome_numbers" => [3,7,22]}
+      different_hash_output_orders = [
+        %[hsh = {"awesome_numbers"=>[3, 7, 22], :peanut_butter=>"jelly"}\n],
+        %[hsh = {:peanut_butter=>"jelly", "awesome_numbers"=>[3, 7, 22]}\n]
+      ]
+      LogBuddy.logger.expects(:debug).with(any_of(*different_hash_output_orders))
+      d { hsh }
+    end 
     
   end
   
@@ -140,7 +156,7 @@ describe LogBuddy::Mixin, " behavior" do
     before { Logger.any_instance.stubs(:debug) }
     it "logs to stdout as well as the default logger" do
       LogBuddy.init :log_to_stdout => true
-      LogBuddy.expects(:stdout_puts).with(%["foo" = 'foo'\n])
+      LogBuddy.expects(:stdout_puts).with(%["foo" = "foo"\n])
       d { "foo" }
     end
     

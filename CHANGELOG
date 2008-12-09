@@ -1,3 +1,5 @@
+v0.2.0  Better log output of objects based on their type, very similiar to Logger/irb behavior; update to micronaut 0.1.0
+
 v0.1.5  Clean up specs and remove noise from spec run
 
 v0.1.4  Micronauts Unite! Test Suite now runs via Micronaut - http://github.com/spicycode/micronaut/

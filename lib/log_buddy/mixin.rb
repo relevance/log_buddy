@@ -17,8 +17,7 @@ module LogBuddy
         logged_line = LogBuddy.read_line(caller[0])
         arguments = LogBuddy.parse_args(logged_line)
         arguments.each do |arg|
-          result = eval(arg, blk.binding)
-          LogBuddy.debug(%[#{arg} = '#{result}'\n])
+          LogBuddy.arg_and_blk_debug(arg, blk)
         end
       rescue RuntimeError => e
         LogBuddy.debug "LogBuddy caught an exception: #{e.message}"

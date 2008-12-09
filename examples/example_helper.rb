@@ -1,6 +1,6 @@
 require 'logger'
 require 'rubygems'
-gem 'spicycode-micronaut', "= 0.0.4"
+gem 'spicycode-micronaut', "~> 0.1.0"
 gem 'mocha'
 require "mocha"
 require 'micronaut'
@@ -11,6 +11,10 @@ def silence_warnings
   yield
 ensure
   $VERBOSE = old_verbose
+end
+
+Micronaut.configure do |config|
+  config.mock_with :mocha
 end
 
 Micronaut::Runner.autorun
