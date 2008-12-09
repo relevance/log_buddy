@@ -1,6 +1,18 @@
 module LogBuddy
   module Utils
   
+    def obj_to_string(obj)
+      case obj
+      when ::String
+        obj
+      when ::Exception
+        "#{ obj.message } (#{ obj.class })\n" <<
+          (obj.backtrace || []).join("\n")
+      else
+        obj.inspect
+      end
+    end
+    
     def debug(str)
       stdout_puts(str) if log_to_stdout?
       logger.debug(str)

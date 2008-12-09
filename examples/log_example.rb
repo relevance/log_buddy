@@ -108,6 +108,34 @@ describe LogBuddy::Mixin, " behavior" do
     
   end
   
+  describe "obj_to_string" do
+    include LogBuddy::Utils
+    
+    class Foo
+      def inspect
+        "inspeck yo-self"
+      end
+    end
+    
+    it "logs string as-is" do
+      obj_to_string("foo").should == "foo"
+    end
+    
+    it "logs exception with exception msg, type, and backtrace" do
+      begin 
+        raise "bad mojo"
+      rescue Exception => exception
+        string = obj_to_string(exception)
+        string.should match /^bad mojo (RuntimeError)*/
+        string.should include(__FILE__)
+      end
+    end
+    
+    it "logs all other objects with #inspect" do
+      obj_to_string(Foo.new).should == "inspeck yo-self"
+    end
+  end
+  
   describe "stdout" do
     before { Logger.any_instance.stubs(:debug) }
     it "logs to stdout as well as the default logger" do
