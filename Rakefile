@@ -44,3 +44,4 @@ task :default => 'micronaut:coverage'
 echoe.spec.add_development_dependency "echoe"
 echoe.spec.add_development_dependency "allison"
 echoe.spec.add_development_dependency "markaby"
+echoe.spec.add_development_dependency "spicycode-micronaut"
