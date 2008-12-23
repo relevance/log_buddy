@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.extra_rdoc_files = ["CHANGELOG", "lib/log_buddy/mixin.rb", "lib/log_buddy/utils.rb", "lib/log_buddy/version.rb", "lib/log_buddy.rb", "LICENSE", "log_buddy.gemspec", "README.rdoc"]
   s.files = ["CHANGELOG", "examples/example_helper.rb", "examples/log_buddy_example.rb", "examples/log_buddy_init_example.rb", "examples/log_example.rb", "examples.rb", "init.rb", "lib/log_buddy/mixin.rb", "lib/log_buddy/utils.rb", "lib/log_buddy/version.rb", "lib/log_buddy.rb", "LICENSE", "log_buddy.gemspec", "Manifest", "Rakefile", "README.rdoc"]
   s.has_rdoc = true
-  s.homepage = %q{http://github.com/relevance/logbuddy}
+  s.homepage = %q{http://github.com/relevance/log_buddy}
   s.rdoc_options = ["--line-numbers", "--inline-source", "--title", "Log_buddy", "--main", "README.rdoc"]
   s.require_paths = ["lib"]
   s.rubyforge_project = %q{thinkrelevance}

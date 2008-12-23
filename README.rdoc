@@ -55,9 +55,9 @@ See examples.rb for live examples you can run.
 == URLS
 
 * Log bugs, issues, and suggestions at Lighthouse: http://relevance.lighthouseapp.com/projects/19074-log-buddy/overview
-* View Source: http://github.com/relevance/logbuddy
-* Git clone Source: git://github.com/relevance/logbuddy.git
-* Continuous Integration: http://runcoderun.com/relevance/logbuddy
+* View Source: http://github.com/relevance/log_buddy
+* Git clone Source: git://github.com/relevance/log_buddy.git
+* Continuous Integration: http://runcoderun.com/relevance/log_buddy
 * RDocs: http://thinkrelevance.rubyforge.org/log_buddy
 
 == LICENSE:
