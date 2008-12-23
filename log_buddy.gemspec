@@ -2,15 +2,15 @@
 
 Gem::Specification.new do |s|
   s.name = %q{log_buddy}
-  s.version = "0.2.0"
+  s.version = "0.2.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 1.2") if s.respond_to? :required_rubygems_version=
   s.authors = ["Rob Sanheim - Relevance"]
-  s.date = %q{2008-12-09}
+  s.date = %q{2008-12-23}
   s.description = %q{Log statements along with their name easily.  Mixin a logger everywhere when you need it.}
   s.email = %q{opensource@thinkrelevance.com}
-  s.extra_rdoc_files = ["CHANGELOG", "LICENSE", "README.rdoc", "lib/log_buddy/mixin.rb", "lib/log_buddy/utils.rb", "lib/log_buddy/version.rb", "lib/log_buddy.rb", "log_buddy.gemspec"]
-  s.files = ["CHANGELOG", "LICENSE", "Manifest", "README.rdoc", "Rakefile", "examples/example_helper.rb", "examples/log_buddy_example.rb", "examples/log_buddy_init_example.rb", "examples/log_example.rb", "examples.rb", "init.rb", "lib/log_buddy/mixin.rb", "lib/log_buddy/utils.rb", "lib/log_buddy/version.rb", "lib/log_buddy.rb", "log_buddy.gemspec"]
+  s.extra_rdoc_files = ["CHANGELOG", "lib/log_buddy/mixin.rb", "lib/log_buddy/utils.rb", "lib/log_buddy/version.rb", "lib/log_buddy.rb", "LICENSE", "log_buddy.gemspec", "README.rdoc"]
+  s.files = ["CHANGELOG", "examples/example_helper.rb", "examples/log_buddy_example.rb", "examples/log_buddy_init_example.rb", "examples/log_example.rb", "examples.rb", "init.rb", "lib/log_buddy/mixin.rb", "lib/log_buddy/utils.rb", "lib/log_buddy/version.rb", "lib/log_buddy.rb", "LICENSE", "log_buddy.gemspec", "Manifest", "Rakefile", "README.rdoc"]
   s.has_rdoc = true
   s.homepage = %q{http://github.com/relevance/logbuddy}
   s.rdoc_options = ["--line-numbers", "--inline-source", "--title", "Log_buddy", "--main", "README.rdoc"]
@@ -28,16 +28,19 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<echoe>, [">= 0"])
       s.add_development_dependency(%q<allison>, [">= 0"])
       s.add_development_dependency(%q<markaby>, [">= 0"])
+      s.add_development_dependency(%q<spicycode-micronaut>, [">= 0"])
     else
       s.add_dependency(%q<echoe>, [">= 0"])
       s.add_dependency(%q<echoe>, [">= 0"])
       s.add_dependency(%q<allison>, [">= 0"])
       s.add_dependency(%q<markaby>, [">= 0"])
+      s.add_dependency(%q<spicycode-micronaut>, [">= 0"])
     end
   else
     s.add_dependency(%q<echoe>, [">= 0"])
     s.add_dependency(%q<echoe>, [">= 0"])
     s.add_dependency(%q<allison>, [">= 0"])
     s.add_dependency(%q<markaby>, [">= 0"])
+    s.add_dependency(%q<spicycode-micronaut>, [">= 0"])
   end
 end
