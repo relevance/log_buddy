@@ -25,6 +25,13 @@ describe LogBuddy do
       ENV["SAFE_LOG_BUDDY"] = nil
     end
     
+    it "should be disabled when the :disabled key is true" do
+      LogBuddy.init(:disabled => true)
+      fake_logger = mock('logger')
+      LogBuddy.stubs(:logger).returns(fake_logger)
+      fake_logger.expects(:debug).never
+      d { "Hello, World!" }
+    end
   end
 
 end

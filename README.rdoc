@@ -8,7 +8,7 @@ log_buddy is your friendly little log buddy at your side, helping you dev, debug
 
 Require the init.rb file to use log_buddy.  By default, it will add two methods to every object at the instance and class level: "d" and "logger".  To use log_buddy without the automatic object intrusion, set ENV["SAFE_LOG_BUDDY"] = true before requiring the init.rb.
 
-You can use your own logger with Logbuddy by passing it into init's options hash:
+You can use your own logger with LogBuddy by passing it into init's options hash:
     
     LogBuddy.init :default_logger => Logger.new('my_log.log')
     
@@ -37,6 +37,10 @@ in the block and the result.  Examples:
 
 
 See examples.rb for live examples you can run.
+
+When you occasionally want to disable LogBuddy (but you don't want to have to remove all your debug statements), you can pass the :disabled option into init's options hash:
+
+  LogBuddy.init :disabled => true
 
 == REQUIREMENTS:
 

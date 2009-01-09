@@ -26,9 +26,11 @@ module LogBuddy
   # * <tt>:logger</tt> - the logger instance that LogBuddy should use (if not provided, 
   #   tries to default to RAILS_DEFAULT_LOGGER, and then to a STDOUT logger).
   # * <tt):log_to_stdout</tt> - whether LogBuddy should _also_ log to STDOUT, very helpful for Autotest (default is +true+).
+  # * <tt>:disabled</tt> - when true, LogBuddy will not produce any output
   def self.init(options = {})
     @logger = options[:logger]
     @log_to_stdout = options.has_key?(:log_to_stdout) ? options[:log_to_stdout] : true
+    @disabled = (options[:disabled] == true)
     mixin_to_object
   end
 

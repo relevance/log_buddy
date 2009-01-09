@@ -2,6 +2,7 @@ module LogBuddy
   module Utils
   
     def debug(obj)
+      return if @disabled
       str = obj_to_string(obj)
       stdout_puts(str) if log_to_stdout?
       logger.debug(str)
