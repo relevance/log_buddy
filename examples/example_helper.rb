@@ -1,6 +1,6 @@
 require 'logger'
 require 'rubygems'
-gem 'spicycode-micronaut', "~> 0.1.5"
+gem "spicycode-micronaut", ">= 0.2.0"
 gem 'mocha'
 require "mocha"
 require 'micronaut'
@@ -15,6 +15,6 @@ end
 
 Micronaut.configure do |config|
   config.mock_with :mocha
+  config.formatter = :documentation
   config.filter_run :options => { :focused => true }
-  config.autorun!
 end

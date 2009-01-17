@@ -1,6 +1,9 @@
 require 'rubygems'
 gem 'echoe'
+gem "spicycode-micronaut", ">= 0.2.0"
 require 'echoe'
+require 'micronaut'
+require 'micronaut/rake_task'
 require File.join(File.dirname(__FILE__), *%w[lib log_buddy version])
 
 echoe = Echoe.new('log_buddy', LogBuddy::VERSION::STRING) do |p|
@@ -18,25 +21,18 @@ end
 Rake.application.instance_variable_get(:@tasks).delete("default")
 Rake.application.instance_variable_get(:@tasks).delete("test")
 
-namespace :micronaut do
-  
-  desc 'Run all examples'
-  task :examples do
-    examples = Dir["examples/**/*_example.rb"].map { |g| Dir.glob(g) }.flatten
-    examples.map! {|f| %Q(require "#{f}")}
-    command = "-e '#{examples.join("; ")}'"
-    ruby command
-  end
-  
+desc "Run all examples"
+Micronaut::RakeTask.new(:examples)
+
+namespace :examples do
   desc "Run all examples using rcov"
-  task :coverage do
-    examples = Dir["examples/**/*_example.rb"].map { |g| Dir.glob(g) }.flatten
-    system "rcov --exclude \"examples/*,gems/*,db/*,/Library/Ruby/*,config/*\" --text-report --sort coverage --no-validator-links #{examples.join(' ')}"
+  Micronaut::RakeTask.new :coverage do |t|
+    t.rcov = true
+    t.rcov_opts = %[--exclude "gems/*,/Library/Ruby/*,config/*" --text-summary  --sort coverage --no-validator-links]
   end
-  
 end
 
-task :default => 'micronaut:coverage'
+task :default => 'examples:coverage'
 
 # The below results in 'input stream exhausted' - dunno why?
 # task :release => [:test, :publish_docs, :announce]
