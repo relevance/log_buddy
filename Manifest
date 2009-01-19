@@ -1,10 +1,12 @@
 CHANGELOG
-examples/example_helper.rb
-examples/log_buddy_example.rb
-examples/log_buddy_init_example.rb
-examples/log_example.rb
+examples/log_buddy/example_helper.rb
+examples/log_buddy/gem_logger_example.rb
+examples/log_buddy/log_buddy_example.rb
+examples/log_buddy/log_buddy_init_example.rb
+examples/log_buddy/log_example.rb
 examples.rb
 init.rb
+lib/log_buddy/gem_logger.rb
 lib/log_buddy/mixin.rb
 lib/log_buddy/utils.rb
 lib/log_buddy/version.rb

@@ -4,6 +4,11 @@ describe LogBuddy do
   describe "init" do
     after  { reset_safe_log_buddy_mode }
 
+    it "should call log_gems! if log_gems is true" do
+      LogBuddy::GemLogger.expects(:log_gems!)
+      LogBuddy.init :log_gems => true
+    end
+    
     it "doesnt mixin to object if SAFE_LOG_BUDDY is true" do
       LogBuddy.expects(:init).never
       ENV["SAFE_LOG_BUDDY"] = "true"
@@ -17,7 +22,7 @@ describe LogBuddy do
 
     def load_init
       silence_warnings do
-        load File.join(File.dirname(__FILE__), *%w[.. init.rb])
+        load File.join(File.dirname(__FILE__), *%w[.. .. init.rb])
       end
     end
 
