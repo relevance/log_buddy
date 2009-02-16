@@ -19,3 +19,5 @@ Micronaut.configure do |config|
   config.color_enabled = true
   config.filter_run :options => { :focused => true }
 end
+
+puts RUBY_VERSION if ENV["RUN_CODE_RUN"]
