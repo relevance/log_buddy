@@ -13,7 +13,7 @@ echoe = Echoe.new('log_buddy', LogBuddy::VERSION::STRING) do |p|
   p.summary = 'Log Buddy is your little development buddy.'
   p.description = 'Log statements along with their name easily.  Mixin a logger everywhere when you need it.'
   p.url = "http://github.com/relevance/log_buddy"
-  p.rdoc_pattern = /^(lib|bin|ext)|txt|rdoc|gemspec|CHANGELOG|LICENSE$/
+  p.rdoc_pattern = /^(lib|bin|ext)|txt|rdoc|markdown|gemspec|CHANGELOG|LICENSE$/
   rdoc_template = `allison --path`.strip << ".rb"
   p.rdoc_template = rdoc_template
 end
