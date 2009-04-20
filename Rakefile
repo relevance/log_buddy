@@ -1,43 +1,52 @@
 require 'rubygems'
-gem 'echoe'
-gem "spicycode-micronaut", ">= 0.2.0"
-require 'echoe'
-require 'micronaut'
-require 'micronaut/rake_task'
-require File.join(File.dirname(__FILE__), *%w[lib log_buddy version])
-
-echoe = Echoe.new('log_buddy', LogBuddy::VERSION::STRING) do |p|
-  p.rubyforge_name = 'thinkrelevance'
-  p.author = 'Rob Sanheim - Relevance'
-  p.email = 'opensource@thinkrelevance.com'
-  p.summary = 'Log Buddy is your little development buddy.'
-  p.description = 'Log statements along with their name easily.  Mixin a logger everywhere when you need it.'
-  p.url = "http://github.com/relevance/log_buddy"
-  p.rdoc_pattern = /^(lib|bin|ext)|txt|rdoc|markdown|gemspec|CHANGELOG|LICENSE$/
-  rdoc_template = `allison --path`.strip << ".rb"
-  p.rdoc_template = rdoc_template
-end
-
-Rake.application.instance_variable_get(:@tasks).delete("default")
-Rake.application.instance_variable_get(:@tasks).delete("test")
-
-desc "Run all examples"
-Micronaut::RakeTask.new(:examples)
-
-namespace :examples do
-  desc "Run all examples using rcov"
-  Micronaut::RakeTask.new :coverage do |t|
-    t.rcov = true
-    t.rcov_opts = %[--exclude "gems/*,/Library/Ruby/*,config/*" --text-summary  --sort coverage --no-validator-links]
+begin
+  require 'jeweler'
+  Jeweler::Tasks.new do |gem|
+    gem.name = "log_buddy"
+    gem.summary = %Q{Log Buddy is your little development buddy.}
+    gem.description = %Q{Log statements along with their name easily.  Mixin a logger everywhere when you need it.}
+    gem.email = "rsanheim@gmail.com"
+    gem.homepage = "http://github.com/relevance/log_buddy"
+    gem.authors = ["Rob Sanheim"]
+    gem.add_development_dependency "spicycode-micronaut"
+    # gem.rubyforge_name = 'thinkrelevance'
+    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
+rescue LoadError
+  puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
 end
 
-task :default => 'examples:coverage'
+begin 
+  gem "spicycode-micronaut"
+  require 'micronaut/rake_task'
+  
+  Micronaut::RakeTask.new(:examples) do |examples|
+    examples.pattern = 'examples/**/*_example.rb'
+    examples.ruby_opts << '-Ilib -Iexamples'
+  end
 
-# The below results in 'input stream exhausted' - dunno why?
-# task :release => [:test, :publish_docs, :announce]
+  Micronaut::RakeTask.new(:rcov) do |examples|
+    examples.pattern = 'examples/**/*_example.rb'
+    examples.rcov_opts = %[-Ilib -Iexamples --exclude "gems/*,/Library/Ruby/*,config/*" --text-summary  --sort coverage --no-validator-links]
+    examples.rcov = true
+  end
 
-echoe.spec.add_development_dependency "echoe"
-echoe.spec.add_development_dependency "allison"
-echoe.spec.add_development_dependency "markaby"
-echoe.spec.add_development_dependency "spicycode-micronaut"
+  task :default => 'rcov'
+rescue LoadError
+  puts "Micronaut not available to run tests.  Install it with: sudo gem install spicycode-micronaut -s http://gems.github.com"
+end
+
+require 'rake/rdoctask'
+Rake::RDocTask.new do |rdoc|
+  if File.exist?('VERSION.yml')
+    config = YAML.load(File.read('VERSION.yml'))
+    version = "#{config[:major]}.#{config[:minor]}.#{config[:patch]}"
+  else
+    version = ""
+  end
+
+  rdoc.rdoc_dir = 'rdoc'
+  rdoc.title = "log_buddy #{version}"
+  rdoc.rdoc_files.include('README*')
+  rdoc.rdoc_files.include('lib/**/*.rb')
+end
