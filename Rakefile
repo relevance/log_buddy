@@ -9,7 +9,7 @@ begin
     gem.homepage = "http://github.com/relevance/log_buddy"
     gem.authors = ["Rob Sanheim"]
     gem.add_development_dependency "spicycode-micronaut"
-    # gem.rubyforge_name = 'thinkrelevance'
+    gem.rubyforge_project = 'thinkrelevance'
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
 rescue LoadError
