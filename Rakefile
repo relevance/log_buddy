@@ -27,7 +27,7 @@ begin
 
   Micronaut::RakeTask.new(:rcov) do |examples|
     examples.pattern = 'examples/**/*_example.rb'
-    examples.rcov_opts = %[-Ilib -Iexamples --exclude "gems/*,/Library/Ruby/*,config/*" --text-summary  --sort coverage --no-validator-links]
+    examples.rcov_opts = %[-Ilib -Iexamples --exclude "gems/*,/Library/Ruby/*,config/*" --text-summary  --sort coverage]
     examples.rcov = true
   end
 
