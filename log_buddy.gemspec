@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{log_buddy}
-  s.version = "0.4.11"
+  s.version = "0.4.12"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Rob Sanheim"]
@@ -35,12 +35,11 @@ Gem::Specification.new do |s|
      "lib/log_buddy/version.rb",
      "log_buddy.gemspec"
   ]
-  s.has_rdoc = true
   s.homepage = %q{http://github.com/relevance/log_buddy}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubyforge_project = %q{thinkrelevance}
-  s.rubygems_version = %q{1.3.1}
+  s.rubygems_version = %q{1.3.3}
   s.summary = %q{Log Buddy is your little development buddy.}
   s.test_files = [
     "examples/log_buddy/example_helper.rb",
@@ -52,7 +51,7 @@ Gem::Specification.new do |s|
 
   if s.respond_to? :specification_version then
     current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
-    s.specification_version = 2
+    s.specification_version = 3
 
     if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
       s.add_development_dependency(%q<spicycode-micronaut>, [">= 0"])
