@@ -4,7 +4,7 @@ module LogBuddy
     BACKTRACE_SIZE = 0..5
     
     def self.log_gems!
-      Gem.send :include, LogBuddy::GemLogger
+      ::Gem.send :include, LogBuddy::GemLogger
     end
     
     def self.included(mod)
