@@ -11,7 +11,7 @@ describe LogBuddy::GemLogger do
     
   end
 
-  if RUBY_VERSION =! '1.9.1'
+  if RUBY_VERSION != '1.9.1'
     
     describe "Gem#activation monkey patching for logging" do
       
