@@ -1,4 +1,3 @@
-require 'rubygems'
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
@@ -32,8 +31,10 @@ begin
   end
 
   task :default => 'rcov'
-rescue LoadError
+rescue LoadError => e
   puts "Micronaut not available to run tests.  Install it with: sudo gem install spicycode-micronaut -s http://gems.github.com"
+  puts e
+  puts e.backtrace
 end
 
 require 'rake/rdoctask'
