@@ -20,5 +20,3 @@ Micronaut.configure do |config|
   config.alias_example_to :fit, :focused => true
   config.filter_run :options => { :focused => true }
 end
-
-puts "RUBY_VERSION => #{RUBY_VERSION}" if ENV["RUN_CODE_RUN"]
