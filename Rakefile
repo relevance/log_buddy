@@ -16,7 +16,6 @@ rescue LoadError
 end
 
 begin 
-  gem "spicycode-micronaut"
   require 'micronaut/rake_task'
   
   Micronaut::RakeTask.new(:examples) do |examples|
