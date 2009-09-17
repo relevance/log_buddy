@@ -1,7 +1,4 @@
 require 'logger'
-require 'rubygems'
-gem "spicycode-micronaut", ">= 0.2.0"
-gem 'mocha'
 require "mocha"
 require 'micronaut'
 require File.expand_path(File.join(File.dirname(__FILE__), "..", "..", "lib", "log_buddy"))
