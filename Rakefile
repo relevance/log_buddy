@@ -7,12 +7,12 @@ begin
     gem.email = "rsanheim@gmail.com"
     gem.homepage = "http://github.com/relevance/log_buddy"
     gem.authors = ["Rob Sanheim"]
-    gem.add_development_dependency "spicycode-micronaut"
-    gem.rubyforge_project = 'thinkrelevance'
-    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
+    gem.add_development_dependency "micronaut", ">= 0.3.0"
+    gem.add_development_dependency "mocha", ">= 0.3.0"
   end
+  Jeweler::GemcutterTasks.new
 rescue LoadError
-  puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
+  puts "Jeweler not available. Install it with: sudo gem install jeweler"
 end
 
 begin 
@@ -29,7 +29,7 @@ begin
     examples.rcov = true
   end
 
-  task :default => 'rcov'
+  task :default => [:check_dependencies, :rcov]
 rescue LoadError => e
   puts "Micronaut not available to run tests.  Install it with: sudo gem install spicycode-micronaut -s http://gems.github.com"
   puts e
