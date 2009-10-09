@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>LogBuddy::GemLogger</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+    <script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Module</span> 
+            LogBuddy::GemLogger 
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/lib/log_buddy/gem_logger_rb.html">lib/log_buddy/gem_logger.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>I</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000001">included</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>L</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000000">log_gems!</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="sectiontitle">Constants</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class="attr-name">BACKTRACE_SIZE</td>
+            <td>=</td>
+            <td class="attr-value">0..5</td>
+        </tr>
+        
+        
+    </table>
+    
+
+    
+
+    
+            <div class="sectiontitle">Class Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000001">
+                    
+                    <a name="M000001"></a><b>included</b>(mod)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000001_source')" id="l_M000001_source">show</a>
+                        
+                        | <a href="http://github.com/relevance/log_buddy/blob/31089d9e59baf19b306725209ee1bef80762a9c5/lib/log_buddy/gem_logger.rb#L10" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000001_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/log_buddy/gem_logger.rb, line 10</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">included</span>(<span class="ruby-identifier">mod</span>)
+
+      <span class="ruby-keyword kw">class</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">mod</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">activate_with_logging</span>(<span class="ruby-identifier">gem</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">version_requirements</span>)
+          <span class="ruby-identifier">d</span> <span class="ruby-node">%[Gem activation for gem: '#{gem}' version: '#{version_requirements}' called from:\n#{caller[BACKTRACE_SIZE].join(&quot;\n&quot;)}]</span>
+          <span class="ruby-identifier">activate_without_logging</span>(<span class="ruby-identifier">gem</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">version_requirements</span>)
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-identifier">alias_method</span> <span class="ruby-identifier">:activate_without_logging</span>, <span class="ruby-identifier">:activate</span>
+        <span class="ruby-identifier">alias_method</span> <span class="ruby-identifier">:activate</span>, <span class="ruby-identifier">:activate_with_logging</span>
+      <span class="ruby-keyword kw">end</span>
+      
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000000">
+                    
+                    <a name="M000000"></a><b>log_gems!</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000000_source')" id="l_M000000_source">show</a>
+                        
+                        | <a href="http://github.com/relevance/log_buddy/blob/31089d9e59baf19b306725209ee1bef80762a9c5/lib/log_buddy/gem_logger.rb#L6" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000000_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/log_buddy/gem_logger.rb, line 6</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">log_gems!</span>
+      <span class="ruby-operator">::</span><span class="ruby-constant">Gem</span>.<span class="ruby-identifier">send</span> <span class="ruby-identifier">:include</span>, <span class="ruby-constant">LogBuddy</span><span class="ruby-operator">::</span><span class="ruby-constant">GemLogger</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

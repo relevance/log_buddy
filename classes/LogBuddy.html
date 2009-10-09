@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>LogBuddy</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Module</span> 
+            LogBuddy 
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/lib/log_buddy/gem_logger_rb.html">lib/log_buddy/gem_logger.rb</a></li>
+            
+            <li><a href="../files/lib/log_buddy/mixin_rb.html">lib/log_buddy/mixin.rb</a></li>
+            
+            <li><a href="../files/lib/log_buddy/utils_rb.html">lib/log_buddy/utils.rb</a></li>
+            
+            <li><a href="../files/lib/log_buddy/version_rb.html">lib/log_buddy/version.rb</a></li>
+            
+            <li><a href="../files/lib/log_buddy_rb.html">lib/log_buddy.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+    <div class="description">
+        <p>
+<a href="LogBuddy.html">LogBuddy</a> is a developer tool for easy logging
+while testing, debugging, and inspecting.
+</p>
+<p>
+The log shortcut method to give you easy, concise output of variables with
+their names and values.
+</p>
+<p>
+Examples:
+</p>
+<pre>
+    a = &quot;foo&quot;
+    @a = &quot;my var&quot;
+    def bark
+     &quot;woof!&quot;
+    end
+
+    d { a }      # logs &quot;a = 'foo'&quot;
+    d { @a }     # logs &quot;@a = 'my var'&quot;
+    d { bark }   # logs &quot;bark = woof!&quot;
+</pre>
+
+    </div>
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>I</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000011">init</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>L</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000014">log_to_stdout?</a>,</li>
+                
+                <li><a href="#M000013">logger</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>M</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000012">mixin_to_object</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+    <div class="sectiontitle">Included Modules</div>
+    <ul>
+        
+        <li>
+            
+            <a href="LogBuddy/VERSION.html">LogBuddy::VERSION</a>
+            
+            START:includes
+        </li>
+        
+        <li>
+            
+            <a href="LogBuddy/VERSION.html">LogBuddy::VERSION</a>
+            
+            START:includes
+        </li>
+        
+    </ul>
+    
+
+    
+
+    
+    <div class="sectiontitle">Classes and Modules</div>
+    <ul>
+        
+        <li><span class="type">MODULE</span> <a href="LogBuddy/GemLogger.html">LogBuddy::GemLogger</a></li>
+        
+        <li><span class="type">MODULE</span> <a href="LogBuddy/Mixin.html">LogBuddy::Mixin</a></li>
+        
+        <li><span class="type">MODULE</span> <a href="LogBuddy/Utils.html">LogBuddy::Utils</a></li>
+        
+        <li><span class="type">MODULE</span> <a href="LogBuddy/VERSION.html">LogBuddy::VERSION</a></li>
+        
+    </ul>
+    
+
+    
+
+    
+
+    
+            <div class="sectiontitle">Class Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000011">
+                    
+                    <a name="M000011"></a><b>init</b>(options = {})
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Configure and include <a href="LogBuddy.html">LogBuddy</a> into Object. You
+can pass in any of the following configuration options:
+</p>
+<ul>
+<li><tt>:logger</tt> - the logger instance that <a
+href="LogBuddy.html">LogBuddy</a> should use (if not provided, tries to
+default to RAILS_DEFAULT_LOGGER, and then to a STDOUT logger).
+
+</li>
+<li><tt):log_to_stdout</tt> - whether <a href="LogBuddy.html">LogBuddy</a>
+should <em>also</em> log to STDOUT, very helpful for Autotest (default is
+<tt>true</tt>).
+
+</li>
+<li><tt>:disabled</tt> - when true, <a href="LogBuddy.html">LogBuddy</a> will
+not produce any output
+
+</li>
+<li><tt>:log_gems</tt> - log Gem activation process - useful for tracking down
+Gem activation errors (default is <tt>false</tt>)
+
+</li>
+</ul>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000011_source')" id="l_M000011_source">show</a>
+                        
+                        | <a href="http://github.com/relevance/log_buddy/blob/8829dfb613bed688485d34fa18b4dc97b93c58d8/lib/log_buddy.rb#L32" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000011_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/log_buddy.rb, line 32</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">init</span>(<span class="ruby-identifier">options</span> = {})
+    <span class="ruby-ivar">@logger</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:logger</span>]
+    <span class="ruby-ivar">@log_to_stdout</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">:log_to_stdout</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:log_to_stdout</span>] <span class="ruby-operator">:</span> <span class="ruby-keyword kw">true</span>
+    <span class="ruby-ivar">@log_gems</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:log_gems</span>]
+    <span class="ruby-ivar">@disabled</span> = (<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:disabled</span>] <span class="ruby-operator">==</span> <span class="ruby-keyword kw">true</span>)
+    <span class="ruby-identifier">mixin_to_object</span>
+    <span class="ruby-constant">GemLogger</span>.<span class="ruby-identifier">log_gems!</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@log_gems</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000014">
+                    
+                    <a name="M000014"></a><b>log_to_stdout?</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000014_source')" id="l_M000014_source">show</a>
+                        
+                        | <a href="http://github.com/relevance/log_buddy/blob/8829dfb613bed688485d34fa18b4dc97b93c58d8/lib/log_buddy.rb#L56" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000014_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/log_buddy.rb, line 56</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">log_to_stdout?</span>
+      <span class="ruby-ivar">@log_to_stdout</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000013">
+                    
+                    <a name="M000013"></a><b>logger</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000013_source')" id="l_M000013_source">show</a>
+                        
+                        | <a href="http://github.com/relevance/log_buddy/blob/8829dfb613bed688485d34fa18b4dc97b93c58d8/lib/log_buddy.rb#L51" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000013_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/log_buddy.rb, line 51</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">logger</span>
+      <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@logger</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@logger</span>
+      <span class="ruby-ivar">@logger</span> = <span class="ruby-identifier">init_default_logger</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000012">
+                    
+                    <a name="M000012"></a><b>mixin_to_object</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Add the <a href="LogBuddy/Mixin.html">LogBuddy::Mixin</a> to Object
+instance and class level.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000012_source')" id="l_M000012_source">show</a>
+                        
+                        | <a href="http://github.com/relevance/log_buddy/blob/8829dfb613bed688485d34fa18b4dc97b93c58d8/lib/log_buddy.rb#L42" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000012_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/log_buddy.rb, line 42</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">mixin_to_object</span>
+    <span class="ruby-constant">Object</span>.<span class="ruby-identifier">class_eval</span> { 
+      <span class="ruby-identifier">include</span> <span class="ruby-constant">LogBuddy</span><span class="ruby-operator">::</span><span class="ruby-constant">Mixin</span>
+      <span class="ruby-identifier">extend</span> <span class="ruby-constant">LogBuddy</span><span class="ruby-operator">::</span><span class="ruby-constant">Mixin</span>
+    }
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

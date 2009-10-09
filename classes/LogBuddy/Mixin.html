@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>LogBuddy::Mixin</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+    <script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Module</span> 
+            LogBuddy::Mixin 
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/lib/log_buddy/mixin_rb.html">lib/log_buddy/mixin.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+    <div class="description">
+        <p>
+The main <a href="Mixin.html">Mixin</a> that gets added on the init call
+</p>
+
+    </div>
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>D</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000002">d</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>L</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000004">logger</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000002">
+                    
+                    <a name="M000002"></a><b>d</b>(msg = nil, &amp;blk)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+This is where the magic happens. This method can take a plain old string,
+and it will log it like any call to Logger#debug. To get the name of the
+thing you are logging and its value, use the block form:
+</p>
+<pre>
+   d { @a }
+</pre>
+<p>
+Seperate with semicolons for multiple things - pretty much any valid ruby
+will work.
+</p>
+<pre>
+   d { @@foo; MY_CONST }
+   d { @person; @@place; object.method() }
+</pre>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000002_source')" id="l_M000002_source">show</a>
+                        
+                        | <a href="http://github.com/relevance/log_buddy/blob/7ac1d3c7aaaa9c68a1335592ac1ed92738f1b1ec/lib/log_buddy/mixin.rb#L13" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000002_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/log_buddy/mixin.rb, line 13</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">d</span>(<span class="ruby-identifier">msg</span> = <span class="ruby-keyword kw">nil</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>)
+      <span class="ruby-constant">LogBuddy</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-identifier">msg</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">msg</span>
+      <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">block_given?</span>
+      <span class="ruby-keyword kw">begin</span>
+        <span class="ruby-identifier">logged_line</span> = <span class="ruby-constant">LogBuddy</span>.<span class="ruby-identifier">read_line</span>(<span class="ruby-identifier">caller</span>[<span class="ruby-value">0</span>])
+        <span class="ruby-identifier">arguments</span> = <span class="ruby-constant">LogBuddy</span>.<span class="ruby-identifier">parse_args</span>(<span class="ruby-identifier">logged_line</span>)
+        <span class="ruby-identifier">arguments</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">arg</span><span class="ruby-operator">|</span>
+          <span class="ruby-constant">LogBuddy</span>.<span class="ruby-identifier">arg_and_blk_debug</span>(<span class="ruby-identifier">arg</span>, <span class="ruby-identifier">blk</span>)
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">RuntimeError</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+        <span class="ruby-constant">LogBuddy</span>.<span class="ruby-identifier">debug</span> <span class="ruby-node">&quot;LogBuddy caught an exception: #{e.message}&quot;</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000004">
+                    
+                    <a name="M000004"></a><b>logger</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000004_source')" id="l_M000004_source">show</a>
+                        
+                        | <a href="http://github.com/relevance/log_buddy/blob/7ac1d3c7aaaa9c68a1335592ac1ed92738f1b1ec/lib/log_buddy/mixin.rb#L27" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000004_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/log_buddy/mixin.rb, line 27</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">logger</span>
+      <span class="ruby-constant">LogBuddy</span>.<span class="ruby-identifier">logger</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

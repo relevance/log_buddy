@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>README.markdown</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            README.markdown
+        </h1>
+        <ul class="files">
+            <li>README.markdown</li>
+            <li>Last modified: Fri Oct 09 10:30:26 -0400 2009</li>
+        </ul>
+    </div>
+
+    <div id="bodyContent">
+        <div id="content">
+    
+    <div class="description">
+        <h1>LogBuddy</h1>
+
+<h2>DESCRIPTION:</h2>
+
+<p>log_buddy is your friendly little log buddy at your side, helping you dev, debug, and test.</p>
+
+<h2>SYNOPSIS:</h2>
+
+<p>Require the init.rb file to use log_buddy.  By default, it will add two methods to every object at the instance and class level: "d" and "logger".  To use log_buddy without the automatic object intrusion, set ENV["SAFE_LOG_BUDDY"] = true before requiring the init.rb.</p>
+
+<p>You can use your own logger with LogBuddy by passing it into init's options hash:</p>
+
+<pre><code>LogBuddy.init :default_logger =&gt; Logger.new('my_log.log')
+</code></pre>
+
+<p>Now you have your logger available from any object, at the instance level and class level:</p>
+
+<pre><code>obj = Object.new
+obj.logger.debug("hi") # logs to 'my_log.log'
+class MyClass; end
+MyClass.logger.info("heya") # also logs to 'my_log.log'
+</code></pre>
+
+<p>You also have a method called "d" (for "debug") on any object, which is used for quick debugging and logging of things while you are developing.
+Its especially useful while using autotest.  When you call the "d" method with an inline block, it will log the name of the things
+in the block and the result.  Examples:</p>
+
+<pre><code>a = "foo"
+@a = "my var"
+@@bar = "class var!"
+def bark
+ "woof!"
+end
+
+d { a }      # logs "a = 'foo'"
+d { @a }     # logs "@a = 'my var'"
+d { @@bar }  # logs "@@bar = 'class var!'"
+d { bark }   # logs "bark = woof!"
+</code></pre>
+
+<p>See examples.rb for live examples you can run.</p>
+
+<p>When you occasionally want to disable LogBuddy (but you don't want to have to remove all your debug statements), you can pass the :disabled option into init's options hash:</p>
+
+<pre><code>LogBuddy.init :disabled =&gt; true
+</code></pre>
+
+<h2>REQUIREMENTS:</h2>
+
+<ul>
+<li>Ruby 1.8.6 or JRuby (tested with 1.1RC3)</li>
+<li>untested on Ruby versions before 1.8.6, but should work fine</li>
+</ul>
+
+
+<h2>ISSUES</h2>
+
+<ul>
+<li>This is meant for non-production use while developing and testing --> it does stuff that is slow and you probably don't want happening in your production environment.</li>
+<li>Don't even try using this in irb.</li>
+</ul>
+
+
+<h2>INSTALL:</h2>
+
+<pre><code>sudo gem install log_buddy
+</code></pre>
+
+<h2>URLS</h2>
+
+<ul>
+<li>Log bugs, issues, and suggestions at Lighthouse: http://relevance.lighthouseapp.com/projects/19074-log-buddy/overview</li>
+<li>View Source: http://github.com/relevance/log_buddy</li>
+<li>Git clone Source: git://github.com/relevance/log_buddy.git</li>
+<li>Continuous Integration: http://runcoderun.com/relevance/log_buddy</li>
+<li>RDocs: http://thinkrelevance.rubyforge.org/log_buddy</li>
+</ul>
+
+
+<h2>LICENSE:</h2>
+
+<p>(The MIT License)</p>
+
+<p>Copyright (c) 2009 Relevance, Inc. - http://thinkrelevance.com</p>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+'Software'), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+<script type="text/javascript">$(function() {
+  $('a').each(function() { $(this).attr('target', '_blank') })
+})</script>
+
+    </div>
+    
+
+    
+
+    
+    
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</div>
+    </div>
+  </body>
+</html>
