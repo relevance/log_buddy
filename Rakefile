@@ -12,7 +12,7 @@ begin
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
-  puts "Jeweler not available. Install it with: sudo gem install jeweler"
+  puts "Jeweler not available. Install it with: gem install jeweler"
 end
 
 begin 
@@ -31,21 +31,22 @@ begin
 
   task :default => [:check_dependencies, :rcov]
 rescue LoadError => e
-  puts "Micronaut not available to run tests.  Install it with: sudo gem install spicycode-micronaut -s http://gems.github.com"
+  puts "Micronaut not available to run tests.  Install it with: gem install micronaut"
   puts e
   puts e.backtrace
 end
 
+begin
+  %w{sdoc sdoc-helpers rdiscount}.each { |name| gem name }
+  require 'sdoc_helpers'
+rescue LoadError => ex
+  puts "sdoc support not enabled:"
+  puts ex.inspect
+end
+
 require 'rake/rdoctask'
 Rake::RDocTask.new do |rdoc|
-  if File.exist?('VERSION.yml')
-    require 'yaml'
-    config = YAML.load(File.read('VERSION.yml'))
-    version = "#{config[:major]}.#{config[:minor]}.#{config[:patch]}"
-  else
-    version = ""
-  end
-
+  version = File.exist?('VERSION') ? File.read('VERSION') : ''
   rdoc.rdoc_dir = 'rdoc'
   rdoc.title = "log_buddy #{version}"
   rdoc.rdoc_files.include('README*')
