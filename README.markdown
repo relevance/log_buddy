@@ -61,7 +61,6 @@ When you occasionally want to disable LogBuddy (but you don't want to have to re
 * Log bugs, issues, and suggestions at Lighthouse: http://relevance.lighthouseapp.com/projects/19074-log-buddy/overview
 * View Source: http://github.com/relevance/log_buddy
 * Git clone Source: git://github.com/relevance/log_buddy.git
-* Continuous Integration: http://runcoderun.com/relevance/log_buddy
 * RDocs: http://thinkrelevance.rubyforge.org/log_buddy
 
 ## LICENSE
