@@ -1,6 +1,5 @@
 require File.join(File.dirname(__FILE__), *%w[log_buddy utils])
 require File.join(File.dirname(__FILE__), *%w[log_buddy mixin])
-require File.join(File.dirname(__FILE__), *%w[log_buddy gem_logger])
 require File.join(File.dirname(__FILE__), *%w[log_buddy version])
 
 =begin rdoc
@@ -28,14 +27,11 @@ module LogBuddy
   #   tries to default to RAILS_DEFAULT_LOGGER, and then to a STDOUT logger).
   # * <tt):log_to_stdout</tt> - whether LogBuddy should _also_ log to STDOUT, very helpful for Autotest (default is +true+).
   # * <tt>:disabled</tt> - when true, LogBuddy will not produce any output
-  # * <tt>:log_gems</tt> - log Gem activation process - useful for tracking down Gem activation errors (default is +false+)
   def self.init(options = {})
     @logger = options[:logger]
     @log_to_stdout = options.has_key?(:log_to_stdout) ? options[:log_to_stdout] : true
-    @log_gems = options[:log_gems]
     @disabled = (options[:disabled] == true)
     mixin_to_object
-    GemLogger.log_gems! if @log_gems
   end
 
   # Add the LogBuddy::Mixin to Object instance and class level.

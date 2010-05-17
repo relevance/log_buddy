@@ -1,4 +1,4 @@
-require File.expand_path(File.join(File.dirname(__FILE__), *%w[example_helper]))
+require File.expand_path(File.join(File.dirname(__FILE__), *%w[spec_helper]))
 
 module SomeModule
   def self.say_something(name)

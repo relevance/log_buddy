@@ -7,7 +7,7 @@ begin
     gem.email = "rsanheim@gmail.com"
     gem.homepage = "http://github.com/relevance/log_buddy"
     gem.authors = ["Rob Sanheim"]
-    gem.add_development_dependency "micronaut", ">= 0.3.0"
+    gem.add_development_dependency "rspec", ">= 0.3.0"
     gem.add_development_dependency "mocha", ">= 0.3.0"
   end
   Jeweler::GemcutterTasks.new
@@ -16,22 +16,19 @@ rescue LoadError
 end
 
 begin 
-  require 'micronaut/rake_task'
+  require 'rspec/core/rake_task'
   
-  Micronaut::RakeTask.new(:examples) do |examples|
-    examples.pattern = 'examples/**/*_example.rb'
-    examples.ruby_opts << '-Ilib -Iexamples'
+  Rspec::Core::RakeTask.new(:spec)
+
+  Rspec::Core::RakeTask.new(:coverage) do |spec|
+    spec.pattern = 'spec/**/*_spec.rb'
+    spec.rcov_opts = %[-Ilib -Ispec --exclude "gems/*,/Library/Ruby/*,config/*" --text-summary  --sort coverage]
+    spec.rcov = true
   end
 
-  Micronaut::RakeTask.new(:rcov) do |examples|
-    examples.pattern = 'examples/**/*_example.rb'
-    examples.rcov_opts = %[-Ilib -Iexamples --exclude "gems/*,/Library/Ruby/*,config/*" --text-summary  --sort coverage]
-    examples.rcov = true
-  end
-
-  task :default => [:check_dependencies, :rcov]
+  task :default => [:check_dependencies, :coverage]
 rescue LoadError => e
-  puts "Micronaut not available to run tests.  Install it with: gem install micronaut"
+  puts "Rspec not available to run tests.  Install it with: gem install rspec --pre"
   puts e
   puts e.backtrace
 end

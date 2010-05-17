@@ -1,3 +1,5 @@
+v0.x.x. Cleanup: move to Rspec; remove GemLoger
+
 v0.4.10 Switch to jeweler; remove dependencies that were superfluous
 
 v0.4.9  Added gem logging for debugging help when tracking down Gem activation errors
