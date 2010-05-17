@@ -7,8 +7,8 @@ begin
     gem.email = "rsanheim@gmail.com"
     gem.homepage = "http://github.com/relevance/log_buddy"
     gem.authors = ["Rob Sanheim"]
-    gem.add_development_dependency "rspec", ">= 0.3.0"
-    gem.add_development_dependency "mocha", ">= 0.3.0"
+    gem.add_development_dependency "rspec", ">= 2.0.0.beta.8"
+    gem.add_development_dependency "mocha", ">= 0.9.0"
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
