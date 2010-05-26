@@ -1,7 +1,11 @@
+$:.unshift File.expand_path('../lib', __FILE__)
+
 begin
   require 'jeweler'
+  require 'log_buddy/version'
   Jeweler::Tasks.new do |gem|
     gem.name = "log_buddy"
+    gem.version = LogBuddy::Version::STRING
     gem.summary = %Q{Log Buddy is your little development buddy.}
     gem.description = %Q{Log statements along with their name easily.  Mixin a logger everywhere when you need it.}
     gem.email = "rsanheim@gmail.com"
@@ -26,7 +30,11 @@ begin
     spec.rcov = true
   end
 
-  task :default => [:check_dependencies, :coverage]
+  if RUBY_VERSION <= "1.8.7"
+    task :default => [:check_dependencies, :coverage]
+  else
+    task :default => [:check_dependencies, :spec]
+  end
 rescue LoadError => e
   puts "Rspec not available to run tests.  Install it with: gem install rspec --pre"
   puts e
@@ -43,7 +51,7 @@ end
 
 require 'rake/rdoctask'
 Rake::RDocTask.new do |rdoc|
-  version = File.exist?('VERSION') ? File.read('VERSION') : ''
+  version = LogBuddy::Version::STRING
   rdoc.rdoc_dir = 'rdoc'
   rdoc.title = "log_buddy #{version}"
   rdoc.rdoc_files.include('README*')

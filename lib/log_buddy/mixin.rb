@@ -23,9 +23,5 @@ module LogBuddy
         LogBuddy.debug "LogBuddy caught an exception: #{e.message}"
       end
     end
-    
-    def logger
-      LogBuddy.logger
-    end 
   end
 end

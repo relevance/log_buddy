@@ -20,23 +20,12 @@ describe LogBuddy::Mixin, " behavior" do
     begin
       Object.const_set "RAILS_DEFAULT_LOGGER", stub_everything
       LogBuddy.init
-      Object.logger.should == RAILS_DEFAULT_LOGGER
+      LogBuddy.logger.should == RAILS_DEFAULT_LOGGER
     ensure 
       Object.send :remove_const, "RAILS_DEFAULT_LOGGER"
     end
   end
     
-  it "uses a plain STDOUT Ruby logger if there is no RAILS_DEFAULT_LOGGER" do
-    LogBuddy.init
-    Object.logger.should == LogBuddy.logger
-  end
-    
-  it "can override the default logger" do
-    file_logger = Logger.new "test.log"
-    LogBuddy.init :logger => file_logger
-    Object.logger.should == file_logger
-  end
-  
   describe "outputting the code being logged and its result" do
     before { LogBuddy.init :log_to_stdout => false }
     it "should log to default logger" do

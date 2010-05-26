@@ -9,20 +9,14 @@ describe LogBuddy do
   it "has stdout config option" do
     LogBuddy.should respond_to(:log_to_stdout?)
   end
-  
-  describe "init" do
-    it "mixes itself into Object instance and class level by default" do
-      Object.expects(:include).with(LogBuddy::Mixin)
-      Object.expects(:extend).with(LogBuddy::Mixin)
-      LogBuddy.init
-    end
 
-    it "adds logger method to Object instance and class" do
-      LogBuddy.init
-      Object.new.should respond_to(:logger)
-      Object.should respond_to(:logger)
-    end
-    
+  it "can override the default logger" do
+    file_logger = Logger.new "test.log"
+    LogBuddy.init :logger => file_logger
+    LogBuddy.logger.should == file_logger
+  end
+
+  describe "init" do
     it "defaults to log to stdout (as well as logger)" do
       LogBuddy.init
       LogBuddy.log_to_stdout?.should == true
@@ -33,5 +27,5 @@ describe LogBuddy do
       LogBuddy.log_to_stdout?.should == true
     end
   end
-
+  
 end

@@ -1,4 +1,7 @@
-v0.x.x. Cleanup: move to Rspec; remove GemLoger
+v0.x.x. Overall cleanup and making things safer:
+  - move to Rspec
+  - remove GemLoger
+  - don't mixin in a logger method to Object, ever -- too dangerous.
 
 v0.4.10 Switch to jeweler; remove dependencies that were superfluous
 
