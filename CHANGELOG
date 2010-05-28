@@ -1,5 +1,4 @@
-
-v0.x.x. Overall cleanup and making things safer:
+v0.5.0 Overall cleanup and making things safer:
   - move to Rspec2
   - move Version into the code base as a constant and out of yml
   - remove GemLoger
