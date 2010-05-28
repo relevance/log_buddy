@@ -5,7 +5,10 @@ require File.join(File.dirname(__FILE__), *%w[log_buddy version])
 =begin rdoc
 LogBuddy is a developer tool for easy logging while testing, debugging, and inspecting.
   
-The log shortcut method to give you easy, concise output of variables with their names and values.
+The <tt>d</tt> log method to give you easy, concise output of variables with their names and values.
+
+Requiring 'log_buddy' will _automatically_ mixin the <tt>d</tt> method into Object.  You can avoid this
+behavior by setting SAFE_LOG_BUDDY to true in your environment before requiring LogBuddy.
 
 Examples:
     a = "foo"
@@ -65,4 +68,6 @@ module LogBuddy
     end
     
   end
+  
+  init unless ENV["SAFE_LOG_BUDDY"]
 end
