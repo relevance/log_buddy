@@ -90,11 +90,6 @@ describe LogBuddy::Mixin, " behavior" do
       d { local1; local2; @ivar1 }
     end
     
-    it "should gracefully handle runtimer errors" do
-      LogBuddy.expects(:debug).with('LogBuddy caught an exception: RuntimeError')
-      d { SomeModule.raise_runtime_error }
-    end
-    
     it "logs things okay with inline rdoc" do
       LogBuddy.stubs(:debug)
       hsh = {:foo=>"bar", "key"=>"value"}
@@ -110,6 +105,22 @@ describe LogBuddy::Mixin, " behavior" do
       LogBuddy.logger.expects(:debug).with(any_of(*different_hash_output_orders))
       d { hsh }
     end 
+    
+    describe "error cases" do
+
+      it "should gracefully handle runtimer errors" do
+        LogBuddy.expects(:debug).with('LogBuddy caught an exception: RuntimeError')
+        d { SomeModule.raise_runtime_error }
+      end
+      
+      it "gracefully handles case where the line of code is empty" do
+        LogBuddy.expects(:read_line).returns("")
+        lambda {
+          d { SomeModule.raise_runtime_error }
+        }.should_not raise_error
+      end
+    end
+    
     
   end
   

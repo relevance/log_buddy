@@ -19,7 +19,7 @@ module LogBuddy
         arguments.each do |arg|
           LogBuddy.arg_and_blk_debug(arg, blk)
         end
-      rescue RuntimeError => e
+      rescue => e
         LogBuddy.debug "LogBuddy caught an exception: #{e.message}"
       end
     end
