@@ -1,7 +1,10 @@
+
 v0.x.x. Overall cleanup and making things safer:
-  - move to Rspec
+  - move to Rspec2
+  - move Version into the code base as a constant and out of yml
   - remove GemLoger
   - don't mixin in a logger method to Object, ever -- too dangerous.
+  - fix issue where logged line goes away and raises exception (GH-2)
 
 v0.4.10 Switch to jeweler; remove dependencies that were superfluous
 
