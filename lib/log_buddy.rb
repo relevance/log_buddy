@@ -58,13 +58,21 @@ module LogBuddy
     
     private
     
+    # First try Rails.logger, then RAILS_DEFAULT_LOGGER (for older
+    # versions of Rails), then just use a STDOUT Logger
     def init_default_logger
-      if Object.const_defined?("RAILS_DEFAULT_LOGGER")
-        @logger = Object.const_get("RAILS_DEFAULT_LOGGER")
+      @logger = if rails_environment && rails_environment.respond_to?(:logger)
+        rails_environment.logger
+      elsif Object.const_defined?("RAILS_DEFAULT_LOGGER")
+        Object.const_get("RAILS_DEFAULT_LOGGER")
       else
         require 'logger'
-        @logger = Logger.new(STDOUT)
+        Logger.new(STDOUT)
       end
+    end
+    
+    def rails_environment
+      Object.const_defined?("Rails") && Object.const_get("Rails")
     end
     
   end

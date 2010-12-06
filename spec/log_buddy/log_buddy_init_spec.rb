@@ -17,7 +17,7 @@ describe LogBuddy do
 
     def load_init
       silence_warnings do
-        load File.join(File.dirname(__FILE__), *%w[.. .. init.rb])
+        load File.expand_path(File.join(File.dirname(__FILE__), *%w[.. .. init.rb]))
       end
     end
 

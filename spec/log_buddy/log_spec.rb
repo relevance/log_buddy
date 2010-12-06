@@ -15,14 +15,35 @@ module SomeModule
 end
 
 describe LogBuddy::Mixin, " behavior" do
-    
-  it "uses RAILS_DEFAULT_LOGGER if its defined" do
-    begin
-      Object.const_set "RAILS_DEFAULT_LOGGER", stub_everything
-      LogBuddy.init
-      LogBuddy.logger.should == RAILS_DEFAULT_LOGGER
-    ensure 
-      Object.send :remove_const, "RAILS_DEFAULT_LOGGER"
+  
+  describe "init" do
+    context "Rails environment" do
+      it "uses Rails.logger first" do
+        begin 
+          rails_logger = stub_everything
+          rails_const = mock("Rails const with logger", :logger => rails_logger)
+          Object.const_set "Rails", rails_const
+          LogBuddy.init
+          LogBuddy.logger.should == rails_logger
+        ensure
+          Object.send :remove_const, "Rails"
+        end
+      end
+      
+      it "falls back to RAILS_DEFAULT_LOGGER if necessary" do
+        begin 
+          rails_default_logger = stub_everything
+          rails_const = stub("Rails const without logger")
+          Object.const_set "Rails", rails_const
+          Object.const_set "RAILS_DEFAULT_LOGGER", rails_default_logger
+          
+          LogBuddy.init
+          LogBuddy.logger.should == rails_default_logger
+        ensure
+          Object.send :remove_const, "Rails"
+          Object.send :remove_const, "RAILS_DEFAULT_LOGGER"
+        end
+      end
     end
   end
     
