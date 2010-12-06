@@ -1,3 +1,5 @@
+v0.6.0 Use Rails.logger if available - avoid deprecation warnings in Rails 3+
+
 v0.5.1 init automatically unless SAFE_LOG_BUDDY (in ENV) is set
 
 v0.5.0 Overall cleanup and making things safer:
