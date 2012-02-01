@@ -43,9 +43,12 @@ module LogBuddy
         "#{ obj.message } (#{ obj.class })\n" <<
           (obj.backtrace || []).join("\n")
       else
-        obj.inspect
+        if LogBuddy.use_awesome_print?
+          obj.respond_to?(:ai) ? obj.ai : obj.inspect
+        else
+          obj.inspect
+        end
       end
     end
-    
   end
 end
