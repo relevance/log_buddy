@@ -33,6 +33,7 @@ module LogBuddy
   def self.init(options = {})
     @logger = options[:logger]
     @log_to_stdout = options.has_key?(:log_to_stdout) ? options[:log_to_stdout] : true
+    @use_awesome_print = options.has_key?(:use_awesome_print) ? options[:use_awesome_print] : false
     @disabled = (options[:disabled] == true)
     mixin_to_object
   end
@@ -54,6 +55,10 @@ module LogBuddy
     
     def log_to_stdout?
       @log_to_stdout
+    end
+
+    def use_awesome_print?
+      @use_awesome_print
     end
     
     private

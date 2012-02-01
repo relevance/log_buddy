@@ -22,7 +22,7 @@ module LogBuddy
     # You must use the brace form (ie d { "hi" }) and not do...end
     def parse_args(logged_line)
       block_contents = logged_line[/\{(.*?)\}/, 1]
-      args = block_contents.split(";").map {|arg| arg.strip }
+      args = block_contents ? block_contents.split(";").map {|arg| arg.strip } : []
     end
   
     # Return the calling line
@@ -43,9 +43,12 @@ module LogBuddy
         "#{ obj.message } (#{ obj.class })\n" <<
           (obj.backtrace || []).join("\n")
       else
-        obj.inspect
+        if LogBuddy.use_awesome_print?
+          obj.respond_to?(:ai) ? obj.ai : obj.inspect
+        else
+          obj.inspect
+        end
       end
     end
-    
   end
 end
