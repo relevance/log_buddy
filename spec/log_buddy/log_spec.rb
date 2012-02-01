@@ -152,6 +152,10 @@ describe LogBuddy::Mixin, " behavior" do
       def inspect
         "inspeck yo-self"
       end
+
+      def ai
+        "awesome_print y0"
+      end
     end
     
     it "logs string as-is" do
@@ -170,6 +174,11 @@ describe LogBuddy::Mixin, " behavior" do
     
     it "logs all other objects with #inspect" do
       obj_to_string(Foo.new).should == "inspeck yo-self"
+    end
+
+    it "logs object using awesome_print" do
+      LogBuddy.init :use_awesome_print => true
+      obj_to_string(Foo.new).should == "awesome_print y0"
     end
   end
   
