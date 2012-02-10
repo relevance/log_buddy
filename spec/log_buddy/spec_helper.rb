@@ -10,7 +10,7 @@ ensure
   $VERBOSE = old_verbose
 end
 
-Rspec.configure do |config|
+RSpec.configure do |config|
   config.filter_run :focused => true
   config.run_all_when_everything_filtered = true
   config.color_enabled = true
