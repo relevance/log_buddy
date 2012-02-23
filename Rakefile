@@ -1,8 +1,9 @@
 $:.unshift File.expand_path('../lib', __FILE__)
 
+require 'log_buddy/version'
+
 begin
   require 'jeweler'
-  require 'log_buddy/version'
   Jeweler::Tasks.new do |gem|
     gem.name = "log_buddy"
     gem.version = LogBuddy::Version::STRING
