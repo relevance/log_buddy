@@ -42,22 +42,14 @@ begin
   
 
   if RUBY_VERSION <= "1.8.7"
-    task :default => [:check_dependencies, :coverage]
+    task :default => [:coverage]
   else
-    task :default => [:check_dependencies, :spec]
+    task :default => [:spec]
   end
 rescue LoadError => e
   puts "Rspec not available to run tests.  Install it with: gem install rspec --pre"
   puts e
   puts e.backtrace
-end
-
-begin
-  %w{sdoc sdoc-helpers rdiscount}.each { |name| gem name }
-  require 'sdoc_helpers'
-rescue LoadError => ex
-  puts "sdoc support not enabled:"
-  puts ex.inspect
 end
 
 require 'rake/rdoctask'
