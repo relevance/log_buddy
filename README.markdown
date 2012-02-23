@@ -4,6 +4,8 @@
 
 log_buddy is your friendly little log buddy at your side, helping you dev, debug, and test.
 
+[![Build Status](https://secure.travis-ci.org/relevance/log_buddy.png?branch=master)](http://travis-ci.org/relevance/log_buddy)
+
 ## SYNOPSIS
 
 Require the init.rb file to use log_buddy.  By default, it will add two methods to every object at the instance and class level: "d" and "logger".  To use log_buddy without the automatic object intrusion, set ENV["SAFE_LOG_BUDDY"] = true before requiring the init.rb.
@@ -25,7 +27,7 @@ in the block and the result.  Examples:
 
     a = "foo"
     @a = "my var"
-    @@bar = "class var!"
+    @@bar = "class var!
     def bark
      "woof!"
     end
