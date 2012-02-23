@@ -12,7 +12,7 @@ Require the init.rb file to use log_buddy.  By default, it will add two methods 
 
 You can use your own logger with LogBuddy by passing it into init's options hash:
     
-    LogBuddy.init :default_logger => Logger.new('my_log.log')
+    LogBuddy.init :logger => Logger.new('my_log.log')
     
 Now you have your logger available from any object, at the instance level and class level:
 
