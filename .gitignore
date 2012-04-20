@@ -5,3 +5,4 @@ pkg/*
 coverage
 TAGS
 coverage/
+Gemfile.lock
