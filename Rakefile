@@ -31,12 +31,3 @@ rescue LoadError => e
   puts e
   puts e.backtrace
 end
-
-require 'rake/rdoctask'
-Rake::RDocTask.new do |rdoc|
-  version = LogBuddy::Version::STRING
-  rdoc.rdoc_dir = 'rdoc'
-  rdoc.title = "log_buddy #{version}"
-  rdoc.rdoc_files.include('README*')
-  rdoc.rdoc_files.include('lib/**/*.rb')
-end
