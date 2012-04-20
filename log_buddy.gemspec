@@ -13,8 +13,8 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.name          = "log_buddy"
   gem.version       = LogBuddy::Version::STRING
-  gem.add_development_dependency %q<rspec>, "~> 2.2"
-  gem.add_development_dependency %q<mocha>, "~> 0.9"
+  gem.add_development_dependency 'rspec', "~> 2.8"
+  gem.add_development_dependency 'mocha', "~> 0.9"
   gem.add_development_dependency "rake", "~> 0.9.2"
   gem.add_development_dependency 'bundler', '~> 1.1'
 end
