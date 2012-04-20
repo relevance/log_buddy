@@ -28,7 +28,7 @@ module LogBuddy
   #
   # * <tt>:logger</tt> - the logger instance that LogBuddy should use (if not provided,
   #   tries to default to RAILS_DEFAULT_LOGGER, and then to a STDOUT logger).
-  # * <tt):log_to_stdout</tt> - whether LogBuddy should _also_ log to STDOUT, very helpful for Autotest (default is +true+).
+  # * <tt>:log_to_stdout</tt> - whether LogBuddy should _also_ log to STDOUT, very helpful for Autotest (default is +true+).
   # * <tt>:disabled</tt> - when true, LogBuddy will not produce any output
   # * <tt>:use_awesome_print</tt> - when true, LogBuddy will log object with awesome_print
   def self.init(options = {})
