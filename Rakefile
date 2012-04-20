@@ -1,26 +1,6 @@
-$:.unshift File.expand_path('../lib', __FILE__)
-
-require 'log_buddy/version'
+require 'bundler/gem_tasks'
 
 begin
-  require 'jeweler'
-  Jeweler::Tasks.new do |gem|
-    gem.name = "log_buddy"
-    gem.version = LogBuddy::Version::STRING
-    gem.summary = %Q{Log Buddy is your little development buddy.}
-    gem.description = %Q{Log statements along with their name easily.  Mixin a logger everywhere when you need it.}
-    gem.email = "rsanheim@gmail.com"
-    gem.homepage = "http://github.com/relevance/log_buddy"
-    gem.authors = ["Rob Sanheim"]
-    gem.add_development_dependency "rspec", "~> 2.2"
-    gem.add_development_dependency "mocha", "~> 0.9"
-  end
-  Jeweler::GemcutterTasks.new
-rescue LoadError
-  puts "Jeweler not available. Install it with: gem install jeweler"
-end
-
-begin 
   require 'rspec/core/rake_task'
 
   RSpec::Core::RakeTask.new(:spec)
