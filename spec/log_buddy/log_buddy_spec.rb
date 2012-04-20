@@ -1,17 +1,13 @@
 require File.expand_path(File.join(File.dirname(__FILE__), *%w[spec_helper]))
 
 describe LogBuddy do
-  
+
   it "has logger" do
     LogBuddy.should respond_to(:logger)
   end
-  
+
   it "has stdout config option" do
     LogBuddy.should respond_to(:log_to_stdout?)
-  end
-
-  it "has awesome_print config option" do
-    LogBuddy.should respond_to(:use_awesome_print?)
   end
 
   it "can override the default logger" do
@@ -41,5 +37,5 @@ describe LogBuddy do
       LogBuddy.use_awesome_print?.should == true
     end
   end
-  
+
 end
