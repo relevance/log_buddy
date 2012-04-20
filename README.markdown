@@ -1,5 +1,5 @@
 # LogBuddy
-  
+
 ## DESCRIPTION
 
 log_buddy is your friendly little log buddy at your side, helping you dev, debug, and test.
@@ -11,9 +11,9 @@ log_buddy is your friendly little log buddy at your side, helping you dev, debug
 Require the init.rb file to use log_buddy.  By default, it will add two methods to every object at the instance and class level: "d" and "logger".  To use log_buddy without the automatic object intrusion, set ENV["SAFE_LOG_BUDDY"] = true before requiring the init.rb.
 
 You can use your own logger with LogBuddy by passing it into init's options hash:
-    
+
     LogBuddy.init :logger => Logger.new('my_log.log')
-    
+
 Now you have your logger available from any object, at the instance level and class level:
 
     obj = Object.new
@@ -46,9 +46,8 @@ When you occasionally want to disable LogBuddy (but you don't want to have to re
 
 ## REQUIREMENTS
 
-* Ruby 1.8.6 or JRuby (tested with 1.1RC3)
-* untested on Ruby versions before 1.8.6, but should work fine
- 
+* Ruby 1.8.7 and greater or JRuby
+
 ## ISSUES
 
 * This is meant for non-production use while developing and testing --> it does stuff that is slow and you probably don't want happening in your production environment.
@@ -56,14 +55,14 @@ When you occasionally want to disable LogBuddy (but you don't want to have to re
 
 ## INSTALL
 
-	sudo gem install log_buddy
+	gem install log_buddy
 
 ## URLS
 
-* Log bugs, issues, and suggestions at Lighthouse: http://relevance.lighthouseapp.com/projects/19074-log-buddy/overview
-* View Source: http://github.com/relevance/log_buddy
-* Git clone Source: git://github.com/relevance/log_buddy.git
-* RDocs: http://thinkrelevance.rubyforge.org/log_buddy
+* File Issues: http://github.com/relevance/log\_buddy/issues
+* View Source: http://github.com/relevance/log\_buddy
+* Git clone Source: git://github.com/relevance/log\_buddy.git
+* Documentation: http://rdoc.info/gems/log\_buddy
 
 ## LICENSE
 
