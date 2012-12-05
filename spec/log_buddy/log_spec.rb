@@ -142,7 +142,6 @@ describe LogBuddy::Mixin, " behavior" do
       end
     end
     
-    
   end
   
   describe "obj_to_string" do
@@ -194,6 +193,25 @@ describe LogBuddy::Mixin, " behavior" do
       LogBuddy.init :log_to_stdout => false
       LogBuddy.expects(:stdout_puts).never
       d { "foo" }
+    end
+  end
+
+  describe "banner_wrap" do
+    include LogBuddy::Utils
+    let(:str) { "Very important debugging code" }
+    before { LogBuddy.stubs(:use_banners?).returns(true) }
+
+    it "should add new lines and a row of '#' symbols" do
+      banner_wrap(str).should match(/\n#+\n/)
+    end
+
+    it "should wrap it if use_banners? is true" do
+      banner_wrap(str).should match(/\n#+\n/)
+    end
+
+    it "should not wrap it if use_banners? is false" do
+      LogBuddy.stubs(:use_banners?).returns(false)
+      banner_wrap(str).should == str
     end
   end
 end

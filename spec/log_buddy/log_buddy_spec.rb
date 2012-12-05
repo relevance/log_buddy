@@ -36,6 +36,11 @@ describe LogBuddy do
       LogBuddy.init :use_awesome_print => true
       LogBuddy.use_awesome_print?.should == true
     end
+
+    it "can be configured to print large banners to make the debug call easier to spot" do
+      LogBuddy.init :use_banners => true
+      LogBuddy.use_banners?.should == true
+    end
   end
 
 end

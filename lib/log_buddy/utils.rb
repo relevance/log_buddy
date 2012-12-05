@@ -36,7 +36,7 @@ module LogBuddy
 
     def obj_to_string(obj, options = {})
       quote_strings = options.delete(:quote_strings)
-      case obj
+      str = case obj
       when ::String
         quote_strings ? %["#{obj}"] : obj
       when ::Exception
@@ -45,6 +45,15 @@ module LogBuddy
       else
         LogBuddy.use_awesome_print? && obj.respond_to?(:ai) ?
           obj.ai : obj.inspect
+      end
+      banner_wrap(str)
+    end
+
+    def banner_wrap(str)
+      if LogBuddy.use_banners?
+        "\n#{"#"*80}\n\n#{str}\n\n#{"#"*80}\n"
+      else
+        str
       end
     end
   end
