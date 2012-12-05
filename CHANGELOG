@@ -1,3 +1,5 @@
+v0.8.0 Add use_banners option for logging. Wraps output in newlines and a line of '#' symbols
+
 v0.7.0
 * Add use_awesome_print option for logging
 * Fix warning from #split called on nil
