@@ -40,9 +40,15 @@ in the block and the result.  Examples:
 
 See examples.rb for live examples you can run.
 
+##OPTIONS
+
 When you occasionally want to disable LogBuddy (but you don't want to have to remove all your debug statements), you can pass the :disabled option into init's options hash:
 
 	LogBuddy.init :disabled => true
+
+If you have problems spotting your debug calls in the mess of other log entries, set use_banners to true. This will insert a newline and a row of 80 '#' symbols above and below your calls to make them much more obvious in long log files.
+
+    LogBuddy.init :use_banners => true
 
 ## REQUIREMENTS
 
