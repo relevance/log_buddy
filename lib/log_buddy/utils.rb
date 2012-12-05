@@ -4,6 +4,7 @@ module LogBuddy
     def debug(obj)
       return if @disabled
       str = obj_to_string(obj)
+      str = banner_wrap(str)
       stdout_puts(str) if log_to_stdout?
       logger.debug(str)
     end
@@ -36,7 +37,7 @@ module LogBuddy
 
     def obj_to_string(obj, options = {})
       quote_strings = options.delete(:quote_strings)
-      str = case obj
+      case obj
       when ::String
         quote_strings ? %["#{obj}"] : obj
       when ::Exception
@@ -46,7 +47,6 @@ module LogBuddy
         LogBuddy.use_awesome_print? && obj.respond_to?(:ai) ?
           obj.ai : obj.inspect
       end
-      banner_wrap(str)
     end
 
     def banner_wrap(str)
