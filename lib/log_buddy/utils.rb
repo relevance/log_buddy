@@ -51,7 +51,7 @@ module LogBuddy
 
     def banner_wrap(str)
       if LogBuddy.use_banners?
-        "\n#{"#"*80}\n\n#{str}\n\n#{"#"*80}\n"
+        "\n#{"#"*80}\n\n#{str}\n#{"#"*80}\n"
       else
         str
       end
