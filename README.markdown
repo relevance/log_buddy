@@ -59,10 +59,10 @@ When you occasionally want to disable LogBuddy (but you don't want to have to re
 
 ## URLS
 
-* File Issues: http://github.com/relevance/log\_buddy/issues
-* View Source: http://github.com/relevance/log\_buddy
-* Git clone Source: git://github.com/relevance/log\_buddy.git
-* Documentation: http://rdoc.info/gems/log\_buddy
+* File Issues: http://github.com/relevance/log_buddy/issues
+* View Source: http://github.com/relevance/log_buddy
+* Git clone Source: git://github.com/relevance/log_buddy.git
+* Documentation: http://rdoc.info/gems/log_buddy
 
 ## LICENSE
 
