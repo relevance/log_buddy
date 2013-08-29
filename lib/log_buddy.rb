@@ -35,6 +35,7 @@ module LogBuddy
     @logger = options[:logger]
     @log_to_stdout = options.has_key?(:log_to_stdout) ? options[:log_to_stdout] : true
     @use_awesome_print = options.has_key?(:use_awesome_print) ? options[:use_awesome_print] : false
+    @use_banners = options.has_key?(:use_banners) ? options[:use_banners] : false
     @disabled = (options[:disabled] == true)
     mixin_to_object
   end
@@ -60,6 +61,10 @@ module LogBuddy
 
     def use_awesome_print?
       @use_awesome_print
+    end
+
+    def use_banners?
+      @use_banners
     end
 
     private

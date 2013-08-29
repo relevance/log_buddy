@@ -4,6 +4,7 @@ module LogBuddy
     def debug(obj)
       return if @disabled
       str = obj_to_string(obj)
+      str = banner_wrap(str)
       stdout_puts(str) if log_to_stdout?
       logger.debug(str)
     end
@@ -45,6 +46,14 @@ module LogBuddy
       else
         LogBuddy.use_awesome_print? && obj.respond_to?(:ai) ?
           obj.ai : obj.inspect
+      end
+    end
+
+    def banner_wrap(str)
+      if LogBuddy.use_banners?
+        "\n#{"#"*80}\n\n#{str}\n#{"#"*80}\n"
+      else
+        str
       end
     end
   end
